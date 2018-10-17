@@ -21,7 +21,10 @@ namespace BLL
         {
             return so.Query_list(fStkOutLogNo);
         }
-
+        public List<V_INVD_StkOutLogItemSum> Query_product(string fStkOutLogNo)
+        {
+            return so.Query_product(fStkOutLogNo);
+        }
 
     }
 }

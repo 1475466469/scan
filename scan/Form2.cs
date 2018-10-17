@@ -34,7 +34,6 @@ namespace scan
         private void lookUpEdit1_EditValueChanged(object sender, EventArgs e)
         {
           List<t_INVD_StkOutLogMst> data= so.Query_fStoutLogNo(lookUpEdit1.EditValue.ToString());
-
             textEdit1.Text = "";
             textEdit2.Text = "";
             textEdit3.Text = "";
@@ -43,6 +42,7 @@ namespace scan
             searchLookUpEdit1.Properties.DataSource = data;
             searchLookUpEdit1.Properties.NullText = "";
 
+
         }
 
         private void searchLookUpEdit1_EditValueChanged(object sender, EventArgs e)
@@ -50,7 +50,19 @@ namespace scan
             List<fStoutLogNoList> data = so.Query_list(searchLookUpEdit1.EditValue.ToString());
             textEdit1.Text = data[0].fDlvNo;
             textEdit2.Text = data[0].fCCode;
-            textEdit3.Text = data[0].fCName;
+            textEdit3.Text = data[0].fCName; ;
+            List<V_INVD_StkOutLogItemSum> product = so.Query_product(searchLookUpEdit1.EditValue.ToString());
+            gridControl1.DataSource = product;
+
+
+
+
+
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

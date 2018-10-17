@@ -51,25 +51,55 @@ namespace DAL
         {
             try
             {
-                var list = (from u in db.t_ADMM_UsrItem
-                            join g in db.t_ADMM_UsrDataRightMst on u.fGrpCode equals g.fUsrID
-                            join k in db.t_ADMM_UsrDataRightItem on g.fUsrID equals k.fUsrID
-                            where u.fUsrID == tum.fUsrID & k.fItemCode == "13"
+                
+                //select* from t_ADMM_UsrDataRightItem where fUsrID = '000099' and fItemCode = '13'
+                var list = from u in db.t_ADMM_UsrDataRightItem
+                            where u.fUsrID == tum.fUsrID & u.fItemCode == "13"
                             select new
                             {
-                                fValue = k.fValue,
-                                fValueDesc = k.fValueDesc
-                            }).ToList().Distinct();
-                
-                List<StoreCode> data = new List<StoreCode>();
-                foreach(var item in list)
+                                fValue = u.fValue,
+                                fValueDesc = u.fValueDesc
+                            };
+                if (list.Count() == 0)
                 {
-                    StoreCode n = new StoreCode();
-                    n.fValue = item.fValue;
-                    n.fValueDesc = item.fValueDesc;
-                    data.Add(n);
+
+                    var list2 = (from u in db.t_ADMM_UsrItem
+                                join g in db.t_ADMM_UsrDataRightMst on u.fGrpCode equals g.fUsrID
+                                join k in db.t_ADMM_UsrDataRightItem on g.fUsrID equals k.fUsrID
+                                where u.fUsrID == tum.fUsrID & k.fItemCode == "13"
+                                select new
+                                {
+                                    fValue = k.fValue,
+                                    fValueDesc = k.fValueDesc
+                                }).ToList().Distinct();
+
+                    List<StoreCode> data = new List<StoreCode>();
+                    foreach (var item in list2)
+                    {
+                        StoreCode n = new StoreCode();
+                        n.fValue = item.fValue;
+                        n.fValueDesc = item.fValueDesc;
+                        data.Add(n);
+                    }
+                    return data;
                 }
-                return data;
+                else
+                {
+                    List<StoreCode> data = new List<StoreCode>();
+                    foreach (var item in list)
+                    {
+                        StoreCode n = new StoreCode();
+                        n.fValue = item.fValue;
+                        n.fValueDesc = item.fValueDesc;
+                        data.Add(n);
+                    }
+                    return data;
+
+                }
+
+
+
+
 
             }
             catch(Exception ex)

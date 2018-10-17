@@ -71,7 +71,26 @@ namespace DAL
                 throw new Exception(ex.Message);
             }
         }
+        /// <summary>
+        /// 根据出库单号拿取品牌专享款的货品
+        /// </summary>
+        /// <param name="fStkOutLogNo"></param>
+        /// <returns></returns>
+          public List<V_INVD_StkOutLogItemSum> Query_product(string fStkOutLogNo)
+        {
+            try
+            {
+                List<V_INVD_StkOutLogItemSum> data = db.V_INVD_StkOutLogItemSum.Where(u => u.fStkOutLogNo == fStkOutLogNo & u.fStyleName == "品牌专享款").ToList();
 
+                return data;
+            }catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            
+
+
+        }
 
 
 

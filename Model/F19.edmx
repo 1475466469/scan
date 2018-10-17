@@ -791,6 +791,32 @@
           <Property Name="_x_f005" Type="nvarchar" MaxLength="4000" />
           <Property Name="_x_f006" Type="nvarchar" MaxLength="4000" />
         </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“DCF19.dbo.V_INVD_StkOutLogItemSum”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="V_INVD_StkOutLogItemSum">
+          <Key>
+            <PropertyRef Name="fGoodsID" />
+            <PropertyRef Name="fCstLotNo" />
+            <PropertyRef Name="fStkOutLogNo" />
+          </Key>
+          <Property Name="fGoodsID" Type="int" Nullable="false" />
+          <Property Name="fGoodsCode" Type="varchar" MaxLength="50" />
+          <Property Name="fGoodsName" Type="nvarchar" MaxLength="500" />
+          <Property Name="fSizeDesc" Type="nvarchar" MaxLength="500" />
+          <Property Name="fCstLotNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="fGoodsType" Type="char" MaxLength="1" />
+          <Property Name="fStkOutLogNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fUnitName" Type="nvarchar" MaxLength="50" />
+          <Property Name="fUp" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="fPlanOutQty" Type="decimal" Precision="38" Scale="6" />
+          <Property Name="fActOutQty" Type="decimal" Precision="38" Scale="6" />
+          <Property Name="fplanoutamt" Type="decimal" Precision="38" Scale="6" />
+          <Property Name="fAmt" Type="decimal" Precision="38" Scale="6" />
+          <Property Name="fCtns" Type="decimal" Precision="38" Scale="6" />
+          <Property Name="fRmQLTName" Type="nvarchar" MaxLength="255" />
+          <Property Name="fClrName" Type="nvarchar" MaxLength="255" />
+          <Property Name="fStyleName" Type="nvarchar" MaxLength="255" />
+        </EntityType>
         <EntityContainer Name="DCF19ModelStoreContainer">
           <EntitySet Name="t_ADMM_UsrDataRightItem" EntityType="Self.t_ADMM_UsrDataRightItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_ADMM_UsrDataRightMst" EntityType="Self.t_ADMM_UsrDataRightMst" Schema="dbo" store:Type="Tables" />
@@ -800,6 +826,27 @@
           <EntitySet Name="t_COPD_DlvMst" EntityType="Self.t_COPD_DlvMst" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_CRMM_CstMst" EntityType="Self.t_CRMM_CstMst" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_INVD_StkOutLogMst" EntityType="Self.t_INVD_StkOutLogMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="V_INVD_StkOutLogItemSum" EntityType="Self.V_INVD_StkOutLogItemSum" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_INVD_StkOutLogItemSum].[fGoodsID] AS [fGoodsID], 
+    [V_INVD_StkOutLogItemSum].[fGoodsCode] AS [fGoodsCode], 
+    [V_INVD_StkOutLogItemSum].[fGoodsName] AS [fGoodsName], 
+    [V_INVD_StkOutLogItemSum].[fSizeDesc] AS [fSizeDesc], 
+    [V_INVD_StkOutLogItemSum].[fCstLotNo] AS [fCstLotNo], 
+    [V_INVD_StkOutLogItemSum].[fGoodsType] AS [fGoodsType], 
+    [V_INVD_StkOutLogItemSum].[fStkOutLogNo] AS [fStkOutLogNo], 
+    [V_INVD_StkOutLogItemSum].[fUnitName] AS [fUnitName], 
+    [V_INVD_StkOutLogItemSum].[fUp] AS [fUp], 
+    [V_INVD_StkOutLogItemSum].[fPlanOutQty] AS [fPlanOutQty], 
+    [V_INVD_StkOutLogItemSum].[fActOutQty] AS [fActOutQty], 
+    [V_INVD_StkOutLogItemSum].[fplanoutamt] AS [fplanoutamt], 
+    [V_INVD_StkOutLogItemSum].[fAmt] AS [fAmt], 
+    [V_INVD_StkOutLogItemSum].[fCtns] AS [fCtns], 
+    [V_INVD_StkOutLogItemSum].[fRmQLTName] AS [fRmQLTName], 
+    [V_INVD_StkOutLogItemSum].[fClrName] AS [fClrName], 
+    [V_INVD_StkOutLogItemSum].[fStyleName] AS [fStyleName]
+    FROM [dbo].[V_INVD_StkOutLogItemSum] AS [V_INVD_StkOutLogItemSum]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -861,6 +908,7 @@
           <EntitySet Name="t_INVD_StkOutLogMst" EntityType="DCF19Model.t_INVD_StkOutLogMst" />
           <EntitySet Name="t_COPD_DlvMst" EntityType="DCF19Model.t_COPD_DlvMst" />
           <EntitySet Name="t_CRMM_CstMst" EntityType="DCF19Model.t_CRMM_CstMst" />
+          <EntitySet Name="V_INVD_StkOutLogItemSum" EntityType="DCF19Model.V_INVD_StkOutLogItemSum" />
         </EntityContainer>
         <EntityType Name="t_ADMM_UsrDataRightItem">
           <Key>
@@ -1600,6 +1648,30 @@
           <Property Name="fIfCanEditPrice" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="fStep" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="fSmallStep" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="V_INVD_StkOutLogItemSum">
+          <Key>
+            <PropertyRef Name="fGoodsID" />
+            <PropertyRef Name="fCstLotNo" />
+            <PropertyRef Name="fStkOutLogNo" />
+          </Key>
+          <Property Name="fGoodsID" Type="Int32" Nullable="false" />
+          <Property Name="fGoodsCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fGoodsName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="fSizeDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="fCstLotNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fGoodsType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fStkOutLogNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fUnitName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fUp" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="fPlanOutQty" Type="Decimal" Precision="38" Scale="6" />
+          <Property Name="fActOutQty" Type="Decimal" Precision="38" Scale="6" />
+          <Property Name="fplanoutamt" Type="Decimal" Precision="38" Scale="6" />
+          <Property Name="fAmt" Type="Decimal" Precision="38" Scale="6" />
+          <Property Name="fCtns" Type="Decimal" Precision="38" Scale="6" />
+          <Property Name="fRmQLTName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="fClrName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="fStyleName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2386,6 +2458,29 @@
                 <ScalarProperty Name="fCName" ColumnName="fCName" />
                 <ScalarProperty Name="fCNName" ColumnName="fCNName" />
                 <ScalarProperty Name="fCCode" ColumnName="fCCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_INVD_StkOutLogItemSum">
+            <EntityTypeMapping TypeName="DCF19Model.V_INVD_StkOutLogItemSum">
+              <MappingFragment StoreEntitySet="V_INVD_StkOutLogItemSum">
+                <ScalarProperty Name="fStyleName" ColumnName="fStyleName" />
+                <ScalarProperty Name="fClrName" ColumnName="fClrName" />
+                <ScalarProperty Name="fRmQLTName" ColumnName="fRmQLTName" />
+                <ScalarProperty Name="fCtns" ColumnName="fCtns" />
+                <ScalarProperty Name="fAmt" ColumnName="fAmt" />
+                <ScalarProperty Name="fplanoutamt" ColumnName="fplanoutamt" />
+                <ScalarProperty Name="fActOutQty" ColumnName="fActOutQty" />
+                <ScalarProperty Name="fPlanOutQty" ColumnName="fPlanOutQty" />
+                <ScalarProperty Name="fUp" ColumnName="fUp" />
+                <ScalarProperty Name="fUnitName" ColumnName="fUnitName" />
+                <ScalarProperty Name="fStkOutLogNo" ColumnName="fStkOutLogNo" />
+                <ScalarProperty Name="fGoodsType" ColumnName="fGoodsType" />
+                <ScalarProperty Name="fCstLotNo" ColumnName="fCstLotNo" />
+                <ScalarProperty Name="fSizeDesc" ColumnName="fSizeDesc" />
+                <ScalarProperty Name="fGoodsName" ColumnName="fGoodsName" />
+                <ScalarProperty Name="fGoodsCode" ColumnName="fGoodsCode" />
+                <ScalarProperty Name="fGoodsID" ColumnName="fGoodsID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

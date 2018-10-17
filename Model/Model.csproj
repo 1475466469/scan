@@ -93,6 +93,9 @@
     <Compile Include="t_INVD_StkOutLogMst.cs">
       <DependentUpon>F19.tt</DependentUpon>
     </Compile>
+    <Compile Include="V_INVD_StkOutLogItemSum.cs">
+      <DependentUpon>F19.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="F19.edmx">
