@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BarcodeDetial.cs" />
     <Compile Include="F19.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -79,6 +80,15 @@
       <DependentUpon>F19.tt</DependentUpon>
     </Compile>
     <Compile Include="t_ADMM_UsrMst.cs">
+      <DependentUpon>F19.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_BCMM_BarcodeFgItem.cs">
+      <DependentUpon>F19.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_BCMM_BarcodeItem.cs">
+      <DependentUpon>F19.tt</DependentUpon>
+    </Compile>
+    <Compile Include="t_BCMM_BarcodeMst.cs">
       <DependentUpon>F19.tt</DependentUpon>
     </Compile>
     <Compile Include="t_BOMM_GoodsMst.cs">

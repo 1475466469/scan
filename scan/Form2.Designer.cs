@@ -58,6 +58,7 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -73,6 +74,19 @@
             this.fGoodsName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.fPlanOutQty = new DevExpress.XtraGrid.Columns.GridColumn();
             this.fStyleName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.fPackNo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.fOrdNo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.fBarcode = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.fSizeDesc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.searchControl1 = new DevExpress.XtraEditors.SearchControl();
+            this.清空ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
@@ -86,6 +100,12 @@
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.searchControl1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -156,7 +176,7 @@
             // labelControl3
             // 
             this.labelControl3.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
-            this.labelControl3.Location = new System.Drawing.Point(434, 23);
+            this.labelControl3.Location = new System.Drawing.Point(418, 23);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(84, 14);
             this.labelControl3.TabIndex = 5;
@@ -165,7 +185,7 @@
             // textEdit1
             // 
             this.textEdit1.Enabled = false;
-            this.textEdit1.Location = new System.Drawing.Point(541, 20);
+            this.textEdit1.Location = new System.Drawing.Point(508, 20);
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Properties.LookAndFeel.TouchUIMode = DevExpress.LookAndFeel.TouchUIMode.False;
             this.textEdit1.Size = new System.Drawing.Size(159, 20);
@@ -174,7 +194,7 @@
             // labelControl4
             // 
             this.labelControl4.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
-            this.labelControl4.Location = new System.Drawing.Point(731, 23);
+            this.labelControl4.Location = new System.Drawing.Point(695, 23);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(60, 14);
             this.labelControl4.TabIndex = 7;
@@ -183,7 +203,7 @@
             // textEdit2
             // 
             this.textEdit2.Enabled = false;
-            this.textEdit2.Location = new System.Drawing.Point(797, 23);
+            this.textEdit2.Location = new System.Drawing.Point(761, 23);
             this.textEdit2.Name = "textEdit2";
             this.textEdit2.Properties.LookAndFeel.TouchUIMode = DevExpress.LookAndFeel.TouchUIMode.False;
             this.textEdit2.Size = new System.Drawing.Size(80, 20);
@@ -192,7 +212,7 @@
             // labelControl5
             // 
             this.labelControl5.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
-            this.labelControl5.Location = new System.Drawing.Point(913, 23);
+            this.labelControl5.Location = new System.Drawing.Point(880, 26);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(60, 14);
             this.labelControl5.TabIndex = 9;
@@ -201,7 +221,7 @@
             // textEdit3
             // 
             this.textEdit3.Enabled = false;
-            this.textEdit3.Location = new System.Drawing.Point(997, 23);
+            this.textEdit3.Location = new System.Drawing.Point(946, 23);
             this.textEdit3.Name = "textEdit3";
             this.textEdit3.Properties.LookAndFeel.TouchUIMode = DevExpress.LookAndFeel.TouchUIMode.False;
             this.textEdit3.Size = new System.Drawing.Size(221, 20);
@@ -223,9 +243,10 @@
             this.barButtonItem2,
             this.barButtonItem3,
             this.barButtonItem1,
-            this.barButtonItem5});
+            this.barButtonItem5,
+            this.barButtonItem6});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 5;
+            this.barManager1.MaxItemId = 6;
             // 
             // bar2
             // 
@@ -236,7 +257,8 @@
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem2, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem3, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem5, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem5, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem6, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -259,7 +281,7 @@
             // barButtonItem3
             // 
             this.barButtonItem3.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.False;
-            this.barButtonItem3.Caption = "完成扫描";
+            this.barButtonItem3.Caption = "开始扫描";
             this.barButtonItem3.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.Glyph")));
             this.barButtonItem3.Id = 2;
             this.barButtonItem3.Name = "barButtonItem3";
@@ -268,11 +290,12 @@
             toolTipTitleItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem2.Image")));
             toolTipItem2.LeftIndent = 6;
             toolTipTitleItem3.LeftIndent = 6;
-            toolTipTitleItem3.Text = "完成扫描";
+            toolTipTitleItem3.Text = "开始扫描";
             superToolTip2.Items.Add(toolTipTitleItem2);
             superToolTip2.Items.Add(toolTipItem2);
             superToolTip2.Items.Add(toolTipTitleItem3);
             this.barButtonItem3.SuperTip = superToolTip2;
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // barButtonItem5
             // 
@@ -281,19 +304,26 @@
             this.barButtonItem5.Id = 4;
             this.barButtonItem5.Name = "barButtonItem5";
             // 
+            // barButtonItem6
+            // 
+            this.barButtonItem6.Caption = "保存";
+            this.barButtonItem6.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.Glyph")));
+            this.barButtonItem6.Id = 5;
+            this.barButtonItem6.Name = "barButtonItem6";
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1456, 40);
+            this.barDockControlTop.Size = new System.Drawing.Size(1556, 40);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 767);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1456, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1556, 0);
             // 
             // barDockControlLeft
             // 
@@ -306,7 +336,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1456, 40);
+            this.barDockControlRight.Location = new System.Drawing.Point(1556, 40);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 727);
             // 
             // barButtonItem1
@@ -346,18 +376,21 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 40);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1456, 93);
+            this.panelControl1.Size = new System.Drawing.Size(1556, 93);
             this.panelControl1.TabIndex = 15;
             // 
             // splitContainerControl1
             // 
-            this.splitContainerControl1.Location = new System.Drawing.Point(12, 139);
+            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 133);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.gridControl1);
             this.splitContainerControl1.Panel1.Text = "Panel1";
+            this.splitContainerControl1.Panel2.Controls.Add(this.gridControl2);
+            this.splitContainerControl1.Panel2.Controls.Add(this.panelControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1432, 627);
-            this.splitContainerControl1.SplitterPosition = 358;
+            this.splitContainerControl1.Size = new System.Drawing.Size(1556, 634);
+            this.splitContainerControl1.SplitterPosition = 454;
             this.splitContainerControl1.TabIndex = 20;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -372,7 +405,7 @@
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(358, 627);
+            this.gridControl1.Size = new System.Drawing.Size(454, 634);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -389,6 +422,7 @@
             this.fStyleName});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
             // 
             // fStkOutLogNo
             // 
@@ -430,11 +464,134 @@
             this.fStyleName.Visible = true;
             this.fStyleName.VisibleIndex = 4;
             // 
+            // gridControl2
+            // 
+            this.gridControl2.ContextMenuStrip = this.contextMenuStrip1;
+            this.gridControl2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl2.Location = new System.Drawing.Point(0, 59);
+            this.gridControl2.MainView = this.gridView2;
+            this.gridControl2.MenuManager = this.barManager1;
+            this.gridControl2.Name = "gridControl2";
+            this.gridControl2.Size = new System.Drawing.Size(1097, 575);
+            this.gridControl2.TabIndex = 1;
+            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView2});
+            this.gridControl2.Click += new System.EventHandler(this.gridControl2_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.删除ToolStripMenuItem,
+            this.清空ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 70);
+            // 
+            // 删除ToolStripMenuItem
+            // 
+            this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
+            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.删除ToolStripMenuItem.Text = "删除";
+            this.删除ToolStripMenuItem.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
+            // 
+            // gridView2
+            // 
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.fPackNo,
+            this.fOrdNo,
+            this.fBarcode,
+            this.gridColumn1,
+            this.gridColumn3,
+            this.fSizeDesc});
+            this.gridView2.GridControl = this.gridControl2;
+            this.gridView2.IndicatorWidth = 40;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsBehavior.Editable = false;
+            this.gridView2.OptionsNavigation.AutoFocusNewRow = true;
+            this.gridView2.OptionsSelection.MultiSelect = true;
+            // 
+            // fPackNo
+            // 
+            this.fPackNo.Caption = "包装编号";
+            this.fPackNo.FieldName = "fPackNo";
+            this.fPackNo.Name = "fPackNo";
+            this.fPackNo.Visible = true;
+            this.fPackNo.VisibleIndex = 0;
+            // 
+            // fOrdNo
+            // 
+            this.fOrdNo.Caption = "订单号";
+            this.fOrdNo.FieldName = "fOrdNo";
+            this.fOrdNo.Name = "fOrdNo";
+            this.fOrdNo.Visible = true;
+            this.fOrdNo.VisibleIndex = 1;
+            // 
+            // fBarcode
+            // 
+            this.fBarcode.Caption = "条码";
+            this.fBarcode.FieldName = "fBarcode";
+            this.fBarcode.Name = "fBarcode";
+            this.fBarcode.Visible = true;
+            this.fBarcode.VisibleIndex = 2;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "品号";
+            this.gridColumn1.FieldName = "fGoodsCode";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 3;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "品名";
+            this.gridColumn3.FieldName = "fGoodsName";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 4;
+            // 
+            // fSizeDesc
+            // 
+            this.fSizeDesc.Caption = "规格";
+            this.fSizeDesc.FieldName = "fSizeDesc";
+            this.fSizeDesc.Name = "fSizeDesc";
+            this.fSizeDesc.Visible = true;
+            this.fSizeDesc.VisibleIndex = 5;
+            // 
+            // panelControl2
+            // 
+            this.panelControl2.Controls.Add(this.searchControl1);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl2.Location = new System.Drawing.Point(0, 0);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(1097, 59);
+            this.panelControl2.TabIndex = 0;
+            // 
+            // searchControl1
+            // 
+            this.searchControl1.Location = new System.Drawing.Point(100, 17);
+            this.searchControl1.MenuManager = this.barManager1;
+            this.searchControl1.Name = "searchControl1";
+            this.searchControl1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Repository.ClearButton(),
+            new DevExpress.XtraEditors.Repository.SearchButton()});
+            this.searchControl1.Properties.LookAndFeel.TouchUIMode = DevExpress.LookAndFeel.TouchUIMode.False;
+            this.searchControl1.Size = new System.Drawing.Size(475, 20);
+            this.searchControl1.TabIndex = 0;
+            this.searchControl1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.searchControl1_KeyUp);
+            // 
+            // 清空ToolStripMenuItem
+            // 
+            this.清空ToolStripMenuItem.Name = "清空ToolStripMenuItem";
+            this.清空ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.清空ToolStripMenuItem.Text = "清空";
+            this.清空ToolStripMenuItem.Click += new System.EventHandler(this.清空ToolStripMenuItem_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1456, 767);
+            this.ClientSize = new System.Drawing.Size(1556, 767);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.barDockControlLeft);
@@ -460,6 +617,12 @@
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.searchControl1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -498,5 +661,19 @@
         private DevExpress.XtraGrid.Columns.GridColumn fGoodsName;
         private DevExpress.XtraGrid.Columns.GridColumn fPlanOutQty;
         private DevExpress.XtraGrid.Columns.GridColumn fStyleName;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
+        private DevExpress.XtraEditors.SearchControl searchControl1;
+        private DevExpress.XtraGrid.GridControl gridControl2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraGrid.Columns.GridColumn fPackNo;
+        private DevExpress.XtraGrid.Columns.GridColumn fOrdNo;
+        private DevExpress.XtraGrid.Columns.GridColumn fBarcode;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn fSizeDesc;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 删除ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 清空ToolStripMenuItem;
     }
 }

@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BarcodeBLL.cs" />
     <Compile Include="loginBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StockOutBLL.cs" />

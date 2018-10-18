@@ -88,8 +88,6 @@ namespace DAL
                 throw new Exception(ex.Message);
             }
             
-
-
         }
 
 

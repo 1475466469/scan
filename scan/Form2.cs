@@ -1,5 +1,6 @@
 ﻿using BLL;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,8 @@ namespace scan
     {
         private loginBLL n = new loginBLL();
         private StockOutBLL so = new StockOutBLL();
+        private BarcodeBLL bc = new BarcodeBLL();
+        private List<BarcodeDetial> barlist = new List<BarcodeDetial>();
         public Form2( )
         {
             InitializeComponent();
@@ -28,6 +31,11 @@ namespace scan
             lookUpEdit1.Properties.DisplayMember = "fValueDesc";
             searchLookUpEdit1.Properties.NullText = "";
             lookUpEdit1.Properties.DataSource = n.GetStore(t);
+            gridControl2.DataSource = barlist;
+            gridView2.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.View_Common1_CustomDrawRowIndicator);
+
+
+
         }
 
 
@@ -42,7 +50,13 @@ namespace scan
             searchLookUpEdit1.Properties.DataSource = data;
             searchLookUpEdit1.Properties.NullText = "";
 
-
+        }
+        private void View_Common1_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.Info.IsRowIndicator && e.RowHandle >= 0)
+            {
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
+            }
         }
 
         private void searchLookUpEdit1_EditValueChanged(object sender, EventArgs e)
@@ -62,6 +76,88 @@ namespace scan
 
         private void Form2_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void searchControl1_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+
+
+                if (e.KeyCode.GetHashCode() == 13)
+                {
+                    if (searchControl1.Text.Trim() != "")
+                    {
+
+                        BarcodeDetial data = bc.GetBarlist(searchControl1.Text);
+
+                        if (barlist.Exists(u => u.fBarcode == searchControl1.Text))
+                        {
+                            MessageBox.Show("已经扫描过了");
+                        }
+                        else if(data==null)
+                        {
+                            MessageBox.Show("条码错误");
+                        }
+                        else
+                        {
+                            barlist.Add(data);
+                            gridControl2.RefreshDataSource();
+                        }
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("不能为空！");
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("请检查网络");
+            }
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MessageBox.Show("4");
+        }
+
+        private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int[] row = gridView2.GetSelectedRows();
+            
+
+           
+            foreach (int i in row)
+            {
+               string barcode= gridView2.GetRowCellValue(i, "fBarcode").ToString();
+               foreach(BarcodeDetial item in barlist)
+                {
+                    if (item.fBarcode.Equals(barcode))
+                    {
+                        barlist.Remove(item);
+                    }
+                }
+                
+
+            }
+            gridControl2.RefreshDataSource();
+        }
+
+        private void gridControl2_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void 清空ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            barlist.Clear();
+            gridControl2.RefreshDataSource();
 
         }
     }

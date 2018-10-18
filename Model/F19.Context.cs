@@ -50,6 +50,12 @@ public partial class DCF19Entities : DbContext
 
     public virtual DbSet<V_INVD_StkOutLogItemSum> V_INVD_StkOutLogItemSum { get; set; }
 
+    public virtual DbSet<t_BCMM_BarcodeFgItem> t_BCMM_BarcodeFgItem { get; set; }
+
+    public virtual DbSet<t_BCMM_BarcodeItem> t_BCMM_BarcodeItem { get; set; }
+
+    public virtual DbSet<t_BCMM_BarcodeMst> t_BCMM_BarcodeMst { get; set; }
+
 }
 
 }

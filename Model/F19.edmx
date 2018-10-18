@@ -118,6 +118,113 @@
           <Property Name="_x_f009" Type="nvarchar" MaxLength="4000" />
           <Property Name="_x_f010" Type="nvarchar" MaxLength="4000" />
         </EntityType>
+        <EntityType Name="t_BCMM_BarcodeFgItem">
+          <Key>
+            <PropertyRef Name="fPackNo" />
+            <PropertyRef Name="fGoodsID" />
+            <PropertyRef Name="fCstLotNo" />
+            <PropertyRef Name="fOrdSNo" />
+          </Key>
+          <Property Name="fPackNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="fGoodsID" Type="int" Nullable="false" />
+          <Property Name="fCstLotNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="fGoodsName" Type="nvarchar" MaxLength="400" />
+          <Property Name="fSizeDesc" Type="nvarchar" MaxLength="500" />
+          <Property Name="fUnitCode" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="fQty" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="fStkOrdNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fStkMoNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fLotNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fCreatorID" Type="varchar" MaxLength="20" />
+          <Property Name="fCreator" Type="nvarchar" MaxLength="30" />
+          <Property Name="fCDate" Type="datetime" />
+          <Property Name="fModifierID" Type="varchar" MaxLength="20" />
+          <Property Name="fModifier" Type="nvarchar" MaxLength="30" />
+          <Property Name="fModiDate" Type="datetime" />
+          <Property Name="fOrdSNo" Type="int" Nullable="false" />
+          <Property Name="fRemark" Type="nvarchar" MaxLength="500" />
+          <Property Name="fEName" Type="nvarchar" MaxLength="500" />
+          <Property Name="fEnSizeDesc" Type="nvarchar" MaxLength="500" />
+          <Property Name="fEnAlias" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="t_BCMM_BarcodeItem">
+          <Key>
+            <PropertyRef Name="fBarcode" />
+          </Key>
+          <Property Name="fBarcode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fPackNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="fPackCtnsByPCS" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="fSPCode" Type="int" />
+          <Property Name="fCstLotNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="fSPName" Type="nvarchar" MaxLength="300" />
+          <Property Name="fSPSizeDesc" Type="nvarchar" MaxLength="300" />
+          <Property Name="fGoodsOUnit" Type="varchar" MaxLength="6" />
+          <Property Name="fCtnL" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="fCtnW" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="fCtnH" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="fCubeRate" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="fOutCuft" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="fOutM3" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="fNetWeight" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="fGrossWeight" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="fWeightUnitCode" Type="varchar" MaxLength="6" />
+          <Property Name="fPrNTimes" Type="int" Nullable="false" />
+          <Property Name="fRemark" Type="nvarchar" MaxLength="200" />
+          <Property Name="fFirstPrnDate" Type="datetime" />
+          <Property Name="fLastPrnDate" Type="datetime" />
+          <Property Name="fCreatorID" Type="varchar" MaxLength="20" />
+          <Property Name="fCreator" Type="nvarchar" MaxLength="30" />
+          <Property Name="fCDate" Type="datetime" />
+          <Property Name="fModifierID" Type="varchar" MaxLength="20" />
+          <Property Name="fModifier" Type="nvarchar" MaxLength="30" />
+          <Property Name="fModiDate" Type="datetime" />
+          <Property Name="fFormerBarcode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fLSNo" Type="int" Nullable="false" />
+          <Property Name="fSPNameEn" Type="nvarchar" MaxLength="500" />
+          <Property Name="fSPSizeDescEn" Type="nvarchar" MaxLength="500" />
+          <Property Name="fTimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="fBigBarCode" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="fFangWeiNo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="fZhuiSuNo" Type="varchar" MaxLength="100" />
+          <Property Name="fXulieNo" Type="varchar" MaxLength="100" />
+          <Property Name="fsubpacksno" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_BCMM_BarcodeMst">
+          <Key>
+            <PropertyRef Name="fPackNo" />
+          </Key>
+          <Property Name="fPackNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="fBarType" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="fOriType" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="fMoNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fPurNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fOrdNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fSingleSetSNo" Type="int" />
+          <Property Name="fSetGoodsID" Type="int" />
+          <Property Name="fSetDesc" Type="nvarchar" MaxLength="100" />
+          <Property Name="fIfMix" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="fWhole" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="fCtnQty" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="fCreatorID" Type="varchar" MaxLength="20" />
+          <Property Name="fCreator" Type="nvarchar" MaxLength="30" />
+          <Property Name="fCDate" Type="datetime" />
+          <Property Name="fModifierID" Type="varchar" MaxLength="20" />
+          <Property Name="fModifier" Type="nvarchar" MaxLength="30" />
+          <Property Name="fModiDate" Type="datetime" />
+          <Property Name="fIfCancel" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="fCancelID" Type="varchar" MaxLength="20" />
+          <Property Name="fCanceler" Type="nvarchar" MaxLength="30" />
+          <Property Name="fCancelDate" Type="datetime" />
+          <Property Name="fFstInDate" Type="smalldatetime" />
+          <Property Name="fQty" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="fOriNo" Type="varchar" MaxLength="50" />
+          <Property Name="fSaleBindCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fTimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="fPackSNo" Type="int" Nullable="false" />
+          <Property Name="fLastTestDate" Type="smalldatetime" />
+          <Property Name="fTestStatus" Type="int" Nullable="false" />
+          <Property Name="fRemark" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
         <EntityType Name="t_BOMM_GoodsMst">
           <Key>
             <PropertyRef Name="fGoodsID" />
@@ -792,7 +899,7 @@
           <Property Name="_x_f006" Type="nvarchar" MaxLength="4000" />
         </EntityType>
         <!--生成过程中发现错误:
-警告 6002: 表/视图“DCF19.dbo.V_INVD_StkOutLogItemSum”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+警告 6002: 表/视图“Demo.dbo.V_INVD_StkOutLogItemSum”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="V_INVD_StkOutLogItemSum">
           <Key>
             <PropertyRef Name="fGoodsID" />
@@ -822,6 +929,9 @@
           <EntitySet Name="t_ADMM_UsrDataRightMst" EntityType="Self.t_ADMM_UsrDataRightMst" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_ADMM_UsrItem" EntityType="Self.t_ADMM_UsrItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_ADMM_UsrMst" EntityType="Self.t_ADMM_UsrMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_BCMM_BarcodeFgItem" EntityType="Self.t_BCMM_BarcodeFgItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_BCMM_BarcodeItem" EntityType="Self.t_BCMM_BarcodeItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_BCMM_BarcodeMst" EntityType="Self.t_BCMM_BarcodeMst" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_BOMM_GoodsMst" EntityType="Self.t_BOMM_GoodsMst" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_COPD_DlvMst" EntityType="Self.t_COPD_DlvMst" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_CRMM_CstMst" EntityType="Self.t_CRMM_CstMst" Schema="dbo" store:Type="Tables" />
@@ -909,6 +1019,9 @@
           <EntitySet Name="t_COPD_DlvMst" EntityType="DCF19Model.t_COPD_DlvMst" />
           <EntitySet Name="t_CRMM_CstMst" EntityType="DCF19Model.t_CRMM_CstMst" />
           <EntitySet Name="V_INVD_StkOutLogItemSum" EntityType="DCF19Model.V_INVD_StkOutLogItemSum" />
+          <EntitySet Name="t_BCMM_BarcodeFgItem" EntityType="DCF19Model.t_BCMM_BarcodeFgItem" />
+          <EntitySet Name="t_BCMM_BarcodeItem" EntityType="DCF19Model.t_BCMM_BarcodeItem" />
+          <EntitySet Name="t_BCMM_BarcodeMst" EntityType="DCF19Model.t_BCMM_BarcodeMst" />
         </EntityContainer>
         <EntityType Name="t_ADMM_UsrDataRightItem">
           <Key>
@@ -1672,6 +1785,113 @@
           <Property Name="fRmQLTName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="fClrName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="fStyleName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="t_BCMM_BarcodeFgItem">
+          <Key>
+            <PropertyRef Name="fPackNo" />
+            <PropertyRef Name="fGoodsID" />
+            <PropertyRef Name="fCstLotNo" />
+            <PropertyRef Name="fOrdSNo" />
+          </Key>
+          <Property Name="fPackNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fGoodsID" Type="Int32" Nullable="false" />
+          <Property Name="fCstLotNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fGoodsName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="fSizeDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="fUnitCode" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="fQty" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="fStkOrdNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fStkMoNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fLotNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fCreatorID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fCreator" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="fCDate" Type="DateTime" Precision="3" />
+          <Property Name="fModifierID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fModifier" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="fModiDate" Type="DateTime" Precision="3" />
+          <Property Name="fOrdSNo" Type="Int32" Nullable="false" />
+          <Property Name="fRemark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="fEName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="fEnSizeDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="fEnAlias" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="t_BCMM_BarcodeItem">
+          <Key>
+            <PropertyRef Name="fBarcode" />
+          </Key>
+          <Property Name="fBarcode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fPackNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fPackCtnsByPCS" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="fSPCode" Type="Int32" />
+          <Property Name="fCstLotNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fSPName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="fSPSizeDesc" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="fGoodsOUnit" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="fCtnL" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="fCtnW" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="fCtnH" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="fCubeRate" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="fOutCuft" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="fOutM3" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="fNetWeight" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="fGrossWeight" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="fWeightUnitCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="fPrNTimes" Type="Int32" Nullable="false" />
+          <Property Name="fRemark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="fFirstPrnDate" Type="DateTime" Precision="3" />
+          <Property Name="fLastPrnDate" Type="DateTime" Precision="3" />
+          <Property Name="fCreatorID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fCreator" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="fCDate" Type="DateTime" Precision="3" />
+          <Property Name="fModifierID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fModifier" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="fModiDate" Type="DateTime" Precision="3" />
+          <Property Name="fFormerBarcode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fLSNo" Type="Int32" Nullable="false" />
+          <Property Name="fSPNameEn" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="fSPSizeDescEn" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="fTimeStamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="fBigBarCode" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="fFangWeiNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="fZhuiSuNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="fXulieNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="fsubpacksno" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_BCMM_BarcodeMst">
+          <Key>
+            <PropertyRef Name="fPackNo" />
+          </Key>
+          <Property Name="fPackNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fBarType" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fOriType" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fMoNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fPurNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fOrdNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fSingleSetSNo" Type="Int32" />
+          <Property Name="fSetGoodsID" Type="Int32" />
+          <Property Name="fSetDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="fIfMix" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fWhole" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fCtnQty" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="fCreatorID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fCreator" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="fCDate" Type="DateTime" Precision="3" />
+          <Property Name="fModifierID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fModifier" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="fModiDate" Type="DateTime" Precision="3" />
+          <Property Name="fIfCancel" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fCancelID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fCanceler" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="fCancelDate" Type="DateTime" Precision="3" />
+          <Property Name="fFstInDate" Type="DateTime" Precision="0" />
+          <Property Name="fQty" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="fOriNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fSaleBindCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fTimeStamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="fPackSNo" Type="Int32" Nullable="false" />
+          <Property Name="fLastTestDate" Type="DateTime" Precision="0" />
+          <Property Name="fTestStatus" Type="Int32" Nullable="false" />
+          <Property Name="fRemark" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2481,6 +2701,113 @@
                 <ScalarProperty Name="fGoodsName" ColumnName="fGoodsName" />
                 <ScalarProperty Name="fGoodsCode" ColumnName="fGoodsCode" />
                 <ScalarProperty Name="fGoodsID" ColumnName="fGoodsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_BCMM_BarcodeFgItem">
+            <EntityTypeMapping TypeName="DCF19Model.t_BCMM_BarcodeFgItem">
+              <MappingFragment StoreEntitySet="t_BCMM_BarcodeFgItem">
+                <ScalarProperty Name="fEnAlias" ColumnName="fEnAlias" />
+                <ScalarProperty Name="fEnSizeDesc" ColumnName="fEnSizeDesc" />
+                <ScalarProperty Name="fEName" ColumnName="fEName" />
+                <ScalarProperty Name="fRemark" ColumnName="fRemark" />
+                <ScalarProperty Name="fOrdSNo" ColumnName="fOrdSNo" />
+                <ScalarProperty Name="fModiDate" ColumnName="fModiDate" />
+                <ScalarProperty Name="fModifier" ColumnName="fModifier" />
+                <ScalarProperty Name="fModifierID" ColumnName="fModifierID" />
+                <ScalarProperty Name="fCDate" ColumnName="fCDate" />
+                <ScalarProperty Name="fCreator" ColumnName="fCreator" />
+                <ScalarProperty Name="fCreatorID" ColumnName="fCreatorID" />
+                <ScalarProperty Name="fLotNo" ColumnName="fLotNo" />
+                <ScalarProperty Name="fStkMoNo" ColumnName="fStkMoNo" />
+                <ScalarProperty Name="fStkOrdNo" ColumnName="fStkOrdNo" />
+                <ScalarProperty Name="fQty" ColumnName="fQty" />
+                <ScalarProperty Name="fUnitCode" ColumnName="fUnitCode" />
+                <ScalarProperty Name="fSizeDesc" ColumnName="fSizeDesc" />
+                <ScalarProperty Name="fGoodsName" ColumnName="fGoodsName" />
+                <ScalarProperty Name="fCstLotNo" ColumnName="fCstLotNo" />
+                <ScalarProperty Name="fGoodsID" ColumnName="fGoodsID" />
+                <ScalarProperty Name="fPackNo" ColumnName="fPackNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_BCMM_BarcodeItem">
+            <EntityTypeMapping TypeName="DCF19Model.t_BCMM_BarcodeItem">
+              <MappingFragment StoreEntitySet="t_BCMM_BarcodeItem">
+                <ScalarProperty Name="fsubpacksno" ColumnName="fsubpacksno" />
+                <ScalarProperty Name="fXulieNo" ColumnName="fXulieNo" />
+                <ScalarProperty Name="fZhuiSuNo" ColumnName="fZhuiSuNo" />
+                <ScalarProperty Name="fFangWeiNo" ColumnName="fFangWeiNo" />
+                <ScalarProperty Name="fBigBarCode" ColumnName="fBigBarCode" />
+                <ScalarProperty Name="fTimeStamp" ColumnName="fTimeStamp" />
+                <ScalarProperty Name="fSPSizeDescEn" ColumnName="fSPSizeDescEn" />
+                <ScalarProperty Name="fSPNameEn" ColumnName="fSPNameEn" />
+                <ScalarProperty Name="fLSNo" ColumnName="fLSNo" />
+                <ScalarProperty Name="fFormerBarcode" ColumnName="fFormerBarcode" />
+                <ScalarProperty Name="fModiDate" ColumnName="fModiDate" />
+                <ScalarProperty Name="fModifier" ColumnName="fModifier" />
+                <ScalarProperty Name="fModifierID" ColumnName="fModifierID" />
+                <ScalarProperty Name="fCDate" ColumnName="fCDate" />
+                <ScalarProperty Name="fCreator" ColumnName="fCreator" />
+                <ScalarProperty Name="fCreatorID" ColumnName="fCreatorID" />
+                <ScalarProperty Name="fLastPrnDate" ColumnName="fLastPrnDate" />
+                <ScalarProperty Name="fFirstPrnDate" ColumnName="fFirstPrnDate" />
+                <ScalarProperty Name="fRemark" ColumnName="fRemark" />
+                <ScalarProperty Name="fPrNTimes" ColumnName="fPrNTimes" />
+                <ScalarProperty Name="fWeightUnitCode" ColumnName="fWeightUnitCode" />
+                <ScalarProperty Name="fGrossWeight" ColumnName="fGrossWeight" />
+                <ScalarProperty Name="fNetWeight" ColumnName="fNetWeight" />
+                <ScalarProperty Name="fOutM3" ColumnName="fOutM3" />
+                <ScalarProperty Name="fOutCuft" ColumnName="fOutCuft" />
+                <ScalarProperty Name="fCubeRate" ColumnName="fCubeRate" />
+                <ScalarProperty Name="fCtnH" ColumnName="fCtnH" />
+                <ScalarProperty Name="fCtnW" ColumnName="fCtnW" />
+                <ScalarProperty Name="fCtnL" ColumnName="fCtnL" />
+                <ScalarProperty Name="fGoodsOUnit" ColumnName="fGoodsOUnit" />
+                <ScalarProperty Name="fSPSizeDesc" ColumnName="fSPSizeDesc" />
+                <ScalarProperty Name="fSPName" ColumnName="fSPName" />
+                <ScalarProperty Name="fCstLotNo" ColumnName="fCstLotNo" />
+                <ScalarProperty Name="fSPCode" ColumnName="fSPCode" />
+                <ScalarProperty Name="fPackCtnsByPCS" ColumnName="fPackCtnsByPCS" />
+                <ScalarProperty Name="fPackNo" ColumnName="fPackNo" />
+                <ScalarProperty Name="fBarcode" ColumnName="fBarcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_BCMM_BarcodeMst">
+            <EntityTypeMapping TypeName="DCF19Model.t_BCMM_BarcodeMst">
+              <MappingFragment StoreEntitySet="t_BCMM_BarcodeMst">
+                <ScalarProperty Name="fRemark" ColumnName="fRemark" />
+                <ScalarProperty Name="fTestStatus" ColumnName="fTestStatus" />
+                <ScalarProperty Name="fLastTestDate" ColumnName="fLastTestDate" />
+                <ScalarProperty Name="fPackSNo" ColumnName="fPackSNo" />
+                <ScalarProperty Name="fTimeStamp" ColumnName="fTimeStamp" />
+                <ScalarProperty Name="fSaleBindCode" ColumnName="fSaleBindCode" />
+                <ScalarProperty Name="fOriNo" ColumnName="fOriNo" />
+                <ScalarProperty Name="fQty" ColumnName="fQty" />
+                <ScalarProperty Name="fFstInDate" ColumnName="fFstInDate" />
+                <ScalarProperty Name="fCancelDate" ColumnName="fCancelDate" />
+                <ScalarProperty Name="fCanceler" ColumnName="fCanceler" />
+                <ScalarProperty Name="fCancelID" ColumnName="fCancelID" />
+                <ScalarProperty Name="fIfCancel" ColumnName="fIfCancel" />
+                <ScalarProperty Name="fModiDate" ColumnName="fModiDate" />
+                <ScalarProperty Name="fModifier" ColumnName="fModifier" />
+                <ScalarProperty Name="fModifierID" ColumnName="fModifierID" />
+                <ScalarProperty Name="fCDate" ColumnName="fCDate" />
+                <ScalarProperty Name="fCreator" ColumnName="fCreator" />
+                <ScalarProperty Name="fCreatorID" ColumnName="fCreatorID" />
+                <ScalarProperty Name="fCtnQty" ColumnName="fCtnQty" />
+                <ScalarProperty Name="fWhole" ColumnName="fWhole" />
+                <ScalarProperty Name="fIfMix" ColumnName="fIfMix" />
+                <ScalarProperty Name="fSetDesc" ColumnName="fSetDesc" />
+                <ScalarProperty Name="fSetGoodsID" ColumnName="fSetGoodsID" />
+                <ScalarProperty Name="fSingleSetSNo" ColumnName="fSingleSetSNo" />
+                <ScalarProperty Name="fOrdNo" ColumnName="fOrdNo" />
+                <ScalarProperty Name="fPurNo" ColumnName="fPurNo" />
+                <ScalarProperty Name="fMoNo" ColumnName="fMoNo" />
+                <ScalarProperty Name="fOriType" ColumnName="fOriType" />
+                <ScalarProperty Name="fBarType" ColumnName="fBarType" />
+                <ScalarProperty Name="fPackNo" ColumnName="fPackNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

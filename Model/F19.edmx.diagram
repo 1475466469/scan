@@ -14,6 +14,9 @@
         <EntityTypeShape EntityType="DCF19Model.t_COPD_DlvMst" Width="1.5" PointX="9.75" PointY="0.75" />
         <EntityTypeShape EntityType="DCF19Model.t_CRMM_CstMst" Width="1.5" PointX="0.75" PointY="10.75" />
         <EntityTypeShape EntityType="DCF19Model.V_INVD_StkOutLogItemSum" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DCF19Model.t_BCMM_BarcodeFgItem" Width="1.5" PointX="12.375" PointY="5.75" />
+        <EntityTypeShape EntityType="DCF19Model.t_BCMM_BarcodeItem" Width="1.5" PointX="12.375" PointY="11.75" />
+        <EntityTypeShape EntityType="DCF19Model.t_BCMM_BarcodeMst" Width="1.5" PointX="14.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
