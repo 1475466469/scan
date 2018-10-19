@@ -103,6 +103,9 @@
     <Compile Include="t_CRMM_CstMst.cs">
       <DependentUpon>F19.tt</DependentUpon>
     </Compile>
+    <Compile Include="t_INVD_StkOutLogItem.cs">
+      <DependentUpon>F19.tt</DependentUpon>
+    </Compile>
     <Compile Include="t_INVD_StkOutLogMst.cs">
       <DependentUpon>F19.tt</DependentUpon>
     </Compile>

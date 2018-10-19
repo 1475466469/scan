@@ -849,6 +849,94 @@
           <Property Name="fStep" Type="varchar(max)" />
           <Property Name="fSmallStep" Type="varchar(max)" />
         </EntityType>
+        <EntityType Name="t_INVD_StkOutLogItem">
+          <Key>
+            <PropertyRef Name="fStkOutLogNo" />
+            <PropertyRef Name="fSNo" />
+          </Key>
+          <Property Name="fStkOutLogNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fSNo" Type="int" Nullable="false" />
+          <Property Name="fOriSNo" Type="int" Nullable="false" />
+          <Property Name="fMoNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fOrdNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fStkMoNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fStkOrdNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fGoodsID" Type="int" Nullable="false" />
+          <Property Name="fGoodsName" Type="nvarchar" MaxLength="400" />
+          <Property Name="fSizeDesc" Type="nvarchar" MaxLength="800" />
+          <Property Name="fUnitCode" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="fLotNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fLvlCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="fPlaceCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fPrvCode" Type="varchar" MaxLength="10" />
+          <Property Name="fPlanOutQty" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="fActOutQty" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="fCtns" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="fUp" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="fAmt" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="fOUP" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="fOAmt" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="fRmUp" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="fRmAmt" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="fPUP" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="fPAmt" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="fMUP" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="fMAmt" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="fRemark" Type="nvarchar" MaxLength="1000" />
+          <Property Name="fCreatorID" Type="varchar" MaxLength="20" />
+          <Property Name="fCreator" Type="nvarchar" MaxLength="30" />
+          <Property Name="fCDate" Type="datetime" />
+          <Property Name="fModifierID" Type="varchar" MaxLength="20" />
+          <Property Name="fModifier" Type="nvarchar" MaxLength="30" />
+          <Property Name="fModiDate" Type="datetime" />
+          <Property Name="fAttachment" Type="int" Nullable="false" />
+          <Property Name="fDCShowSeqNo" Type="int" />
+          <Property Name="fCstLotNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="fVouID" Type="int" />
+          <Property Name="fVTypeID" Type="int" />
+          <Property Name="fVouNo" Type="int" />
+          <Property Name="fVouGNo" Type="varchar" MaxLength="50" />
+          <Property Name="fDlvType" Type="char" MaxLength="1" />
+          <Property Name="fIfEnableEdit" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="fOriPlanOutQty" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="fCstCalcDate" Type="smalldatetime" />
+          <Property Name="fCstCalcID" Type="varchar" MaxLength="20" />
+          <Property Name="fCstCalcer" Type="nvarchar" MaxLength="30" />
+          <Property Name="fRemark2" Type="nvarchar" MaxLength="1000" />
+          <Property Name="fIfGenVou" Type="char" MaxLength="1" />
+          <Property Name="fIfInv" Type="char" MaxLength="1" />
+          <Property Name="fOrdSNo" Type="int" Nullable="false" />
+          <Property Name="fSaleBindCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fBuildingNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="fFloorNo" Type="nvarchar" MaxLength="400" />
+          <Property Name="fArea" Type="nvarchar" MaxLength="100" />
+          <Property Name="fRoomType" Type="nvarchar" MaxLength="50" />
+          <Property Name="fHouseNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="fGraphNumber" Type="nvarchar" MaxLength="200" />
+          <Property Name="fIfIst" Type="char" MaxLength="1" />
+          <Property Name="fPrjNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fScanedQty" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="fTrdNo" Type="varchar" MaxLength="50" />
+          <Property Name="fTrdSNo" Type="int" />
+          <Property Name="fTrdVouID" Type="int" />
+          <Property Name="fTrdVTypeID" Type="int" />
+          <Property Name="fTrdVouNo" Type="int" />
+          <Property Name="fTrdVouGNo" Type="varchar" MaxLength="50" />
+          <Property Name="fIfGenTrdVou" Type="char" MaxLength="1" />
+          <Property Name="fTrdVouID2" Type="int" />
+          <Property Name="fTrdVTypeID2" Type="int" />
+          <Property Name="fTrdVouNo2" Type="int" />
+          <Property Name="fTrdVouGNo2" Type="varchar" MaxLength="50" />
+          <Property Name="fIfGenTrdVou2" Type="char" MaxLength="1" />
+          <Property Name="fSelectedQty" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="fLinkServer" Type="varchar" MaxLength="50" />
+          <Property Name="fLinkDatabase" Type="varchar" MaxLength="50" />
+          <Property Name="fTurnAcSubId" Type="int" Nullable="false" />
+          <Property Name="fActOutQtyOri" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="fDGStkInQty" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="fDGStkInDate" Type="datetime" />
+          <Property Name="fDGStkInUsrName" Type="nvarchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="t_INVD_StkOutLogMst">
           <Key>
             <PropertyRef Name="fStkOutLogNo" />
@@ -949,6 +1037,7 @@
           <EntitySet Name="t_BOMM_GoodsMst" EntityType="Self.t_BOMM_GoodsMst" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_COPD_DlvMst" EntityType="Self.t_COPD_DlvMst" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_CRMM_CstMst" EntityType="Self.t_CRMM_CstMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_INVD_StkOutLogItem" EntityType="Self.t_INVD_StkOutLogItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_INVD_StkOutLogMst" EntityType="Self.t_INVD_StkOutLogMst" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="V_INVD_StkOutLogItemSum" EntityType="Self.V_INVD_StkOutLogItemSum" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1037,6 +1126,7 @@
           <EntitySet Name="t_BCMM_BarcodeItem" EntityType="DCF19Model.t_BCMM_BarcodeItem" />
           <EntitySet Name="t_BCMM_BarcodeMst" EntityType="DCF19Model.t_BCMM_BarcodeMst" />
           <EntitySet Name="DO_t_TemporaryScan" EntityType="DCF19Model.DO_t_TemporaryScan" />
+          <EntitySet Name="t_INVD_StkOutLogItem" EntityType="DCF19Model.t_INVD_StkOutLogItem" />
         </EntityContainer>
         <EntityType Name="t_ADMM_UsrDataRightItem">
           <Key>
@@ -1920,6 +2010,94 @@
           <Property Name="fSizeDesc" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="saveDate" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="fGoodsName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="t_INVD_StkOutLogItem">
+          <Key>
+            <PropertyRef Name="fStkOutLogNo" />
+            <PropertyRef Name="fSNo" />
+          </Key>
+          <Property Name="fStkOutLogNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fSNo" Type="Int32" Nullable="false" />
+          <Property Name="fOriSNo" Type="Int32" Nullable="false" />
+          <Property Name="fMoNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fOrdNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fStkMoNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fStkOrdNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fGoodsID" Type="Int32" Nullable="false" />
+          <Property Name="fGoodsName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="fSizeDesc" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="fUnitCode" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="fLotNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fLvlCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fPlaceCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fPrvCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="fPlanOutQty" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="fActOutQty" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="fCtns" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="fUp" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="fAmt" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="fOUP" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="fOAmt" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="fRmUp" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="fRmAmt" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="fPUP" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="fPAmt" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="fMUP" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="fMAmt" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="fRemark" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="fCreatorID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fCreator" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="fCDate" Type="DateTime" Precision="3" />
+          <Property Name="fModifierID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fModifier" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="fModiDate" Type="DateTime" Precision="3" />
+          <Property Name="fAttachment" Type="Int32" Nullable="false" />
+          <Property Name="fDCShowSeqNo" Type="Int32" />
+          <Property Name="fCstLotNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fVouID" Type="Int32" />
+          <Property Name="fVTypeID" Type="Int32" />
+          <Property Name="fVouNo" Type="Int32" />
+          <Property Name="fVouGNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fDlvType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fIfEnableEdit" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fOriPlanOutQty" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="fCstCalcDate" Type="DateTime" Precision="0" />
+          <Property Name="fCstCalcID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fCstCalcer" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="fRemark2" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="fIfGenVou" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fIfInv" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fOrdSNo" Type="Int32" Nullable="false" />
+          <Property Name="fSaleBindCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fBuildingNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fFloorNo" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="fArea" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="fRoomType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fHouseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fGraphNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="fIfIst" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fPrjNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fScanedQty" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="fTrdNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fTrdSNo" Type="Int32" />
+          <Property Name="fTrdVouID" Type="Int32" />
+          <Property Name="fTrdVTypeID" Type="Int32" />
+          <Property Name="fTrdVouNo" Type="Int32" />
+          <Property Name="fTrdVouGNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fIfGenTrdVou" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fTrdVouID2" Type="Int32" />
+          <Property Name="fTrdVTypeID2" Type="Int32" />
+          <Property Name="fTrdVouNo2" Type="Int32" />
+          <Property Name="fTrdVouGNo2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fIfGenTrdVou2" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="fSelectedQty" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="fLinkServer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fLinkDatabase" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fTurnAcSubId" Type="Int32" Nullable="false" />
+          <Property Name="fActOutQtyOri" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="fDGStkInQty" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="fDGStkInDate" Type="DateTime" Precision="3" />
+          <Property Name="fDGStkInUsrName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2850,6 +3028,94 @@
                 <ScalarProperty Name="fOrdNo" ColumnName="fOrdNo" />
                 <ScalarProperty Name="fPackNo" ColumnName="fPackNo" />
                 <ScalarProperty Name="fStOutLogNo" ColumnName="fStOutLogNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_INVD_StkOutLogItem">
+            <EntityTypeMapping TypeName="DCF19Model.t_INVD_StkOutLogItem">
+              <MappingFragment StoreEntitySet="t_INVD_StkOutLogItem">
+                <ScalarProperty Name="fDGStkInUsrName" ColumnName="fDGStkInUsrName" />
+                <ScalarProperty Name="fDGStkInDate" ColumnName="fDGStkInDate" />
+                <ScalarProperty Name="fDGStkInQty" ColumnName="fDGStkInQty" />
+                <ScalarProperty Name="fActOutQtyOri" ColumnName="fActOutQtyOri" />
+                <ScalarProperty Name="fTurnAcSubId" ColumnName="fTurnAcSubId" />
+                <ScalarProperty Name="fLinkDatabase" ColumnName="fLinkDatabase" />
+                <ScalarProperty Name="fLinkServer" ColumnName="fLinkServer" />
+                <ScalarProperty Name="fSelectedQty" ColumnName="fSelectedQty" />
+                <ScalarProperty Name="fIfGenTrdVou2" ColumnName="fIfGenTrdVou2" />
+                <ScalarProperty Name="fTrdVouGNo2" ColumnName="fTrdVouGNo2" />
+                <ScalarProperty Name="fTrdVouNo2" ColumnName="fTrdVouNo2" />
+                <ScalarProperty Name="fTrdVTypeID2" ColumnName="fTrdVTypeID2" />
+                <ScalarProperty Name="fTrdVouID2" ColumnName="fTrdVouID2" />
+                <ScalarProperty Name="fIfGenTrdVou" ColumnName="fIfGenTrdVou" />
+                <ScalarProperty Name="fTrdVouGNo" ColumnName="fTrdVouGNo" />
+                <ScalarProperty Name="fTrdVouNo" ColumnName="fTrdVouNo" />
+                <ScalarProperty Name="fTrdVTypeID" ColumnName="fTrdVTypeID" />
+                <ScalarProperty Name="fTrdVouID" ColumnName="fTrdVouID" />
+                <ScalarProperty Name="fTrdSNo" ColumnName="fTrdSNo" />
+                <ScalarProperty Name="fTrdNo" ColumnName="fTrdNo" />
+                <ScalarProperty Name="fScanedQty" ColumnName="fScanedQty" />
+                <ScalarProperty Name="fPrjNo" ColumnName="fPrjNo" />
+                <ScalarProperty Name="fIfIst" ColumnName="fIfIst" />
+                <ScalarProperty Name="fGraphNumber" ColumnName="fGraphNumber" />
+                <ScalarProperty Name="fHouseNumber" ColumnName="fHouseNumber" />
+                <ScalarProperty Name="fRoomType" ColumnName="fRoomType" />
+                <ScalarProperty Name="fArea" ColumnName="fArea" />
+                <ScalarProperty Name="fFloorNo" ColumnName="fFloorNo" />
+                <ScalarProperty Name="fBuildingNo" ColumnName="fBuildingNo" />
+                <ScalarProperty Name="fSaleBindCode" ColumnName="fSaleBindCode" />
+                <ScalarProperty Name="fOrdSNo" ColumnName="fOrdSNo" />
+                <ScalarProperty Name="fIfInv" ColumnName="fIfInv" />
+                <ScalarProperty Name="fIfGenVou" ColumnName="fIfGenVou" />
+                <ScalarProperty Name="fRemark2" ColumnName="fRemark2" />
+                <ScalarProperty Name="fCstCalcer" ColumnName="fCstCalcer" />
+                <ScalarProperty Name="fCstCalcID" ColumnName="fCstCalcID" />
+                <ScalarProperty Name="fCstCalcDate" ColumnName="fCstCalcDate" />
+                <ScalarProperty Name="fOriPlanOutQty" ColumnName="fOriPlanOutQty" />
+                <ScalarProperty Name="fIfEnableEdit" ColumnName="fIfEnableEdit" />
+                <ScalarProperty Name="fDlvType" ColumnName="fDlvType" />
+                <ScalarProperty Name="fVouGNo" ColumnName="fVouGNo" />
+                <ScalarProperty Name="fVouNo" ColumnName="fVouNo" />
+                <ScalarProperty Name="fVTypeID" ColumnName="fVTypeID" />
+                <ScalarProperty Name="fVouID" ColumnName="fVouID" />
+                <ScalarProperty Name="fCstLotNo" ColumnName="fCstLotNo" />
+                <ScalarProperty Name="fDCShowSeqNo" ColumnName="fDCShowSeqNo" />
+                <ScalarProperty Name="fAttachment" ColumnName="fAttachment" />
+                <ScalarProperty Name="fModiDate" ColumnName="fModiDate" />
+                <ScalarProperty Name="fModifier" ColumnName="fModifier" />
+                <ScalarProperty Name="fModifierID" ColumnName="fModifierID" />
+                <ScalarProperty Name="fCDate" ColumnName="fCDate" />
+                <ScalarProperty Name="fCreator" ColumnName="fCreator" />
+                <ScalarProperty Name="fCreatorID" ColumnName="fCreatorID" />
+                <ScalarProperty Name="fRemark" ColumnName="fRemark" />
+                <ScalarProperty Name="fMAmt" ColumnName="fMAmt" />
+                <ScalarProperty Name="fMUP" ColumnName="fMUP" />
+                <ScalarProperty Name="fPAmt" ColumnName="fPAmt" />
+                <ScalarProperty Name="fPUP" ColumnName="fPUP" />
+                <ScalarProperty Name="fRmAmt" ColumnName="fRmAmt" />
+                <ScalarProperty Name="fRmUp" ColumnName="fRmUp" />
+                <ScalarProperty Name="fOAmt" ColumnName="fOAmt" />
+                <ScalarProperty Name="fOUP" ColumnName="fOUP" />
+                <ScalarProperty Name="fAmt" ColumnName="fAmt" />
+                <ScalarProperty Name="fUp" ColumnName="fUp" />
+                <ScalarProperty Name="fCtns" ColumnName="fCtns" />
+                <ScalarProperty Name="fActOutQty" ColumnName="fActOutQty" />
+                <ScalarProperty Name="fPlanOutQty" ColumnName="fPlanOutQty" />
+                <ScalarProperty Name="fPrvCode" ColumnName="fPrvCode" />
+                <ScalarProperty Name="fPlaceCode" ColumnName="fPlaceCode" />
+                <ScalarProperty Name="fLvlCode" ColumnName="fLvlCode" />
+                <ScalarProperty Name="fLotNo" ColumnName="fLotNo" />
+                <ScalarProperty Name="fUnitCode" ColumnName="fUnitCode" />
+                <ScalarProperty Name="fSizeDesc" ColumnName="fSizeDesc" />
+                <ScalarProperty Name="fGoodsName" ColumnName="fGoodsName" />
+                <ScalarProperty Name="fGoodsID" ColumnName="fGoodsID" />
+                <ScalarProperty Name="fStkOrdNo" ColumnName="fStkOrdNo" />
+                <ScalarProperty Name="fStkMoNo" ColumnName="fStkMoNo" />
+                <ScalarProperty Name="fOrdNo" ColumnName="fOrdNo" />
+                <ScalarProperty Name="fMoNo" ColumnName="fMoNo" />
+                <ScalarProperty Name="fOriSNo" ColumnName="fOriSNo" />
+                <ScalarProperty Name="fSNo" ColumnName="fSNo" />
+                <ScalarProperty Name="fStkOutLogNo" ColumnName="fStkOutLogNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

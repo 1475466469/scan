@@ -58,6 +58,8 @@ public partial class DCF19Entities : DbContext
 
     public virtual DbSet<DO_t_TemporaryScan> DO_t_TemporaryScan { get; set; }
 
+    public virtual DbSet<t_INVD_StkOutLogItem> t_INVD_StkOutLogItem { get; set; }
+
 }
 
 }

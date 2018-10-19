@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="40613cc00fde480f9959a2961e71ba34" Name="Diagram1" ZoomLevel="68">
+      <Diagram DiagramId="40613cc00fde480f9959a2961e71ba34" Name="Diagram1" ZoomLevel="65">
         <EntityTypeShape EntityType="DCF19Model.t_ADMM_UsrMst" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DCF19Model.t_ADMM_UsrDataRightItem" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="DCF19Model.t_ADMM_UsrDataRightMst" Width="1.5" PointX="5.375" PointY="0.75" />
@@ -18,6 +18,7 @@
         <EntityTypeShape EntityType="DCF19Model.t_BCMM_BarcodeItem" Width="1.5" PointX="12.375" PointY="11.75" />
         <EntityTypeShape EntityType="DCF19Model.t_BCMM_BarcodeMst" Width="1.5" PointX="14.375" PointY="0.75" />
         <EntityTypeShape EntityType="DCF19Model.DO_t_TemporaryScan" Width="1.5" PointX="14.375" PointY="8.75" />
+        <EntityTypeShape EntityType="DCF19Model.t_INVD_StkOutLogItem" Width="1.5" PointX="14.375" PointY="12.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

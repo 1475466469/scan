@@ -90,6 +90,14 @@ namespace DAL
             
         }
 
+        //
+
+        public t_INVD_StkOutLogItem GetFordNo(string fStkOutLogNo)
+        {
+            t_INVD_StkOutLogItem list = db.t_INVD_StkOutLogItem.Where(u => u.fStkOutLogNo == fStkOutLogNo).FirstOrDefault();
+            return list;
+        }
+
 
 
 

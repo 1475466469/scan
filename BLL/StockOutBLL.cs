@@ -25,6 +25,10 @@ namespace BLL
         {
             return so.Query_product(fStkOutLogNo);
         }
+        public t_INVD_StkOutLogItem GetFordNo(string fStkOutLogNo)
+        {
+            return so.GetFordNo(fStkOutLogNo);
+        }
 
     }
 }

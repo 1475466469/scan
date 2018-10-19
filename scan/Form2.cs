@@ -172,10 +172,13 @@ namespace scan
 
         private void 清空ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            barlist.Clear();
+            
+                barlist.Clear();
+
+                gridControl2.RefreshDataSource();
+                barButtonItem8.Enabled = false;
+
            
-            gridControl2.RefreshDataSource();
-            barButtonItem8.Enabled = false;
 
         }
 
@@ -213,9 +216,16 @@ namespace scan
 
                 }
 
-            }catch(Exception ex)
+            }
+            catch (System.Data.Entity.Core.EntityException)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("请检查网络");
+            }
+
+
+            catch (Exception)
+            {
+                MessageBox.Show("已在别的出库单扫描过");
             }
 
         }
@@ -234,6 +244,7 @@ namespace scan
 
             int[] row = gridView2.GetSelectedRows();
             List<BarcodeDetial> del = new List<BarcodeDetial>();
+            sf.del(searchLookUpEdit1.EditValue.ToString());
             foreach (int i in row)
             {
                 string barcode = gridView2.GetRowCellValue(i, "fBarcode").ToString();
@@ -249,7 +260,7 @@ namespace scan
             if (flag == 1)
             {
                 List<DO_t_TemporaryScan> files = new List<DO_t_TemporaryScan>();
-                sf.del(searchLookUpEdit1.EditValue.ToString());
+               
                 foreach(BarcodeDetial b in barlist)
                 {
                     DO_t_TemporaryScan ts = new DO_t_TemporaryScan()
@@ -336,6 +347,56 @@ namespace scan
 
             gridControl2.RefreshDataSource();
         }
+
+        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            //1.获取此出库单订单号判断是销售订单还是预测订单
+            List<V_INVD_StkOutLogItemSum> product = so.Query_product(searchLookUpEdit1.EditValue.ToString());
+            if (product.Count > 0)
+            {
+                if (barlist.Count > 0)
+                {
+
+                    //判断是销售订单还是预测订单
+                    t_INVD_StkOutLogItem data = so.GetFordNo(product[0].fStkOutLogNo);
+                    if (data.fOrdNo.StartsWith("XS"))
+                    {
+                        MessageBox.Show("XS");
+
+                    }else if (data.fOrdNo.StartsWith("YC"))
+                    {
+                        MessageBox.Show("yc");
+                    }
+
+
+
+
+
+
+                }
+                else
+                {
+                    MessageBox.Show("您还没有扫描！");
+                }
+
+
+            }
+            else
+            {
+                MessageBox.Show("没有找到要扫描的订单");
+            }
+
+
+
+            //获取所有的的已经扫描货品拿取订单号
+
+
+
+
+
+        }
+
+
 
 
     }
