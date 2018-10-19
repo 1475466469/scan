@@ -5,6 +5,19 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DCF19Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DO_t_TemporaryScan">
+          <Key>
+            <PropertyRef Name="fBarcode" />
+          </Key>
+          <Property Name="fStOutLogNo" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="fPackNo" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="fOrdNo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="fBarcode" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="fGoodsCode" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="fGoodsName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="fSizeDesc" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="saveDate" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
         <EntityType Name="t_ADMM_UsrDataRightItem">
           <Key>
             <PropertyRef Name="fUsrType" />
@@ -925,6 +938,7 @@
           <Property Name="fStyleName" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityContainer Name="DCF19ModelStoreContainer">
+          <EntitySet Name="DO_t_TemporaryScan" EntityType="Self.DO_t_TemporaryScan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_ADMM_UsrDataRightItem" EntityType="Self.t_ADMM_UsrDataRightItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_ADMM_UsrDataRightMst" EntityType="Self.t_ADMM_UsrDataRightMst" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_ADMM_UsrItem" EntityType="Self.t_ADMM_UsrItem" Schema="dbo" store:Type="Tables" />
@@ -1022,6 +1036,7 @@
           <EntitySet Name="t_BCMM_BarcodeFgItem" EntityType="DCF19Model.t_BCMM_BarcodeFgItem" />
           <EntitySet Name="t_BCMM_BarcodeItem" EntityType="DCF19Model.t_BCMM_BarcodeItem" />
           <EntitySet Name="t_BCMM_BarcodeMst" EntityType="DCF19Model.t_BCMM_BarcodeMst" />
+          <EntitySet Name="DO_t_TemporaryScan" EntityType="DCF19Model.DO_t_TemporaryScan" />
         </EntityContainer>
         <EntityType Name="t_ADMM_UsrDataRightItem">
           <Key>
@@ -1892,6 +1907,19 @@
           <Property Name="fLastTestDate" Type="DateTime" Precision="0" />
           <Property Name="fTestStatus" Type="Int32" Nullable="false" />
           <Property Name="fRemark" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DO_t_TemporaryScan">
+          <Key>
+            <PropertyRef Name="fBarcode" />
+          </Key>
+          <Property Name="fStOutLogNo" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="fPackNo" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="fOrdNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="fBarcode" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="fGoodsCode" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="fSizeDesc" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="saveDate" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="fGoodsName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2808,6 +2836,20 @@
                 <ScalarProperty Name="fOriType" ColumnName="fOriType" />
                 <ScalarProperty Name="fBarType" ColumnName="fBarType" />
                 <ScalarProperty Name="fPackNo" ColumnName="fPackNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DO_t_TemporaryScan">
+            <EntityTypeMapping TypeName="DCF19Model.DO_t_TemporaryScan">
+              <MappingFragment StoreEntitySet="DO_t_TemporaryScan">
+                <ScalarProperty Name="fGoodsName" ColumnName="fGoodsName" />
+                <ScalarProperty Name="saveDate" ColumnName="saveDate" />
+                <ScalarProperty Name="fSizeDesc" ColumnName="fSizeDesc" />
+                <ScalarProperty Name="fGoodsCode" ColumnName="fGoodsCode" />
+                <ScalarProperty Name="fBarcode" ColumnName="fBarcode" />
+                <ScalarProperty Name="fOrdNo" ColumnName="fOrdNo" />
+                <ScalarProperty Name="fPackNo" ColumnName="fPackNo" />
+                <ScalarProperty Name="fStOutLogNo" ColumnName="fStOutLogNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

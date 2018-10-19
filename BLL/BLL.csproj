@@ -49,6 +49,7 @@
     <Compile Include="BarcodeBLL.cs" />
     <Compile Include="loginBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScanfileBLL.cs" />
     <Compile Include="StockOutBLL.cs" />
   </ItemGroup>
   <ItemGroup>

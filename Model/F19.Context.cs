@@ -56,6 +56,8 @@ public partial class DCF19Entities : DbContext
 
     public virtual DbSet<t_BCMM_BarcodeMst> t_BCMM_BarcodeMst { get; set; }
 
+    public virtual DbSet<DO_t_TemporaryScan> DO_t_TemporaryScan { get; set; }
+
 }
 
 }
