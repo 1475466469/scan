@@ -676,6 +676,7 @@
             this.searchControl1.Properties.LookAndFeel.TouchUIMode = DevExpress.LookAndFeel.TouchUIMode.False;
             this.searchControl1.Size = new System.Drawing.Size(475, 20);
             this.searchControl1.TabIndex = 0;
+            this.searchControl1.SelectedIndexChanged += new System.EventHandler(this.searchControl1_SelectedIndexChanged);
             this.searchControl1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.searchControl1_KeyUp);
             // 
             // Form2

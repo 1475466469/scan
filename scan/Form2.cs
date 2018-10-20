@@ -3,6 +3,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using Model;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -105,8 +106,59 @@ namespace scan
                         }
                         else
                         {
-                            barlist.Add(data);
-                            gridControl2.RefreshDataSource();
+                            List<V_INVD_StkOutLogItemSum> product = so.Query_product(searchLookUpEdit1.EditValue.ToString());
+
+                            //查询是否有这个品号
+                            V_INVD_StkOutLogItemSum result = product.Where(u => u.fGoodsCode.Equals(data.fGoodsCode)).FirstOrDefault();
+                            if (data.fOrdNo.StartsWith("YC"))//条码订单号是yc开头
+                            {
+                               
+                                if(result != null)
+                                {
+                                    barlist.Add(data);
+                                    gridControl2.RefreshDataSource();
+                                    MessageBox.Show("ok");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("此单不包含品号"+data.fGoodsCode);
+                                }
+                            }
+                            else
+                            {
+                                if (result != null)
+                                {
+                                    t_INVD_StkOutLogItem t = so.GetFordNo(searchLookUpEdit1.EditValue.ToString());
+
+                                    if (data.fOrdNo.Equals(t.fOrdNo))
+                                    {
+                                        barlist.Add(data);
+                                        gridControl2.RefreshDataSource();
+                                       
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("您的条码订单号为:"+data.fOrdNo+"  不匹配出库单的订单号");
+
+                                    }
+                                   
+
+
+                                }
+                                else
+                                {
+                                    MessageBox.Show("此单不包含品号" + data.fGoodsCode);
+                                }
+
+
+                            }
+
+
+
+
+
+                               
+                            
                             
                         }
                         
@@ -350,54 +402,39 @@ namespace scan
 
         private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //1.获取此出库单订单号判断是销售订单还是预测订单
             List<V_INVD_StkOutLogItemSum> product = so.Query_product(searchLookUpEdit1.EditValue.ToString());
-            if (product.Count > 0)
+
+
+            for(int i = 0; i < product.Count; i++)
             {
-                if (barlist.Count > 0)
+
+                int row = barlist.Count(u => u.fGoodsCode == product[i].fGoodsCode);
+               
+               if(row > (int)product[i].fPlanOutQty)
                 {
-
-                    //判断是销售订单还是预测订单
-                    t_INVD_StkOutLogItem data = so.GetFordNo(product[0].fStkOutLogNo);
-                    if (data.fOrdNo.StartsWith("XS"))
-                    {
-                        MessageBox.Show("XS");
-
-                    }else if (data.fOrdNo.StartsWith("YC"))
-                    {
-                        MessageBox.Show("yc");
-                    }
+                    MessageBox.Show("品号：" + product[i].fGoodsCode + "多出" + (row - (int)product[i].fPlanOutQty) + "套");
+                    return;
 
 
-
-
-
-
-                }
-                else
+                }else if(row < (int)product[i].fPlanOutQty)
                 {
-                    MessageBox.Show("您还没有扫描！");
+                    MessageBox.Show("品号：" + product[i].fGoodsCode + "差" + ( (int)product[i].fPlanOutQty-row) + "套");
+                    return;
                 }
 
-
-            }
-            else
-            {
-                MessageBox.Show("没有找到要扫描的订单");
+                
             }
 
-
-
-            //获取所有的的已经扫描货品拿取订单号
-
+            MessageBox.Show("全部通过");
 
 
 
 
         }
 
+        private void searchControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
-
-
+        }
     }
 }
