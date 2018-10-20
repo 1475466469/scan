@@ -35,6 +35,9 @@ namespace DAL
             {
                 t_ADMM_UsrMst tum = db.t_ADMM_UsrMst.Where(u => u.fUsrID == t.fUsrID & u.C_x_f010==t.C_x_f010).FirstOrDefault();
                 return tum;
+            }catch(System.Data.Entity.Core.EntityException)
+            {
+                throw new System.Data.Entity.Core.EntityException("请检查网络！");
             }catch(Exception ex)
             {
                 throw new Exception(ex.Message);

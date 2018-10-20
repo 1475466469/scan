@@ -88,7 +88,6 @@ namespace scan
             try
             {
 
-
                 if (e.KeyCode.GetHashCode() == 13)
                 {
                     if (searchControl1.Text.Trim() != "")
@@ -117,7 +116,7 @@ namespace scan
                                 {
                                     barlist.Add(data);
                                     gridControl2.RefreshDataSource();
-                                    MessageBox.Show("ok");
+                                 
                                 }
                                 else
                                 {

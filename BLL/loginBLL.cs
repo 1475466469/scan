@@ -14,15 +14,11 @@ namespace BLL
         public t_ADMM_UsrMst LoginHandle(string Usrid,string Pwd)
         {
             
-            try
-            {
+            
                 t_ADMM_UsrMst admin = new Login(Usrid, Pwd).Query();
                 return admin;
 
-            }catch(Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+           
            
         }
 

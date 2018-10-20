@@ -34,6 +34,7 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.Pwd = new DevExpress.XtraEditors.TextEdit();
             this.checkButton1 = new DevExpress.XtraEditors.CheckButton();
+            this.loginLoad = new DevExpress.XtraWaitForm.ProgressPanel();
             ((System.ComponentModel.ISupportInitialize)(this.Usrid.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pwd.Properties)).BeginInit();
             this.SuspendLayout();
@@ -70,10 +71,22 @@
             this.checkButton1.Name = "checkButton1";
             this.checkButton1.CheckedChanged += new System.EventHandler(this.checkButton1_CheckedChanged);
             // 
+            // loginLoad
+            // 
+            this.loginLoad.Appearance.BackColor = ((System.Drawing.Color)(resources.GetObject("progressPanel1.Appearance.BackColor")));
+            this.loginLoad.Appearance.Options.UseBackColor = true;
+            this.loginLoad.AppearanceCaption.Font = ((System.Drawing.Font)(resources.GetObject("resource.Font")));
+            this.loginLoad.AppearanceCaption.Options.UseFont = true;
+            this.loginLoad.AppearanceDescription.Font = ((System.Drawing.Font)(resources.GetObject("resource.Font1")));
+            this.loginLoad.AppearanceDescription.Options.UseFont = true;
+            resources.ApplyResources(this.loginLoad, "loginLoad");
+            this.loginLoad.Name = "loginLoad";
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.Controls.Add(this.loginLoad);
             this.Controls.Add(this.checkButton1);
             this.Controls.Add(this.Pwd);
             this.Controls.Add(this.labelControl2);
@@ -95,6 +108,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit Pwd;
         private DevExpress.XtraEditors.CheckButton checkButton1;
+        private DevExpress.XtraWaitForm.ProgressPanel loginLoad;
     }
 }
 
