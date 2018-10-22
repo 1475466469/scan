@@ -28,14 +28,21 @@ namespace scan
         }
         public Form2(t_ADMM_UsrMst t)
         {
-            InitializeComponent();
-            lookUpEdit1.Properties.ValueMember = "fValue";   
-            lookUpEdit1.Properties.DisplayMember = "fValueDesc";
-            searchLookUpEdit1.Properties.NullText = "";
-            lookUpEdit1.Properties.DataSource = n.GetStore(t);
-            gridControl2.DataSource = barlist;
-            gridView2.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.View_Common1_CustomDrawRowIndicator);
+            try
+            {
 
+
+                InitializeComponent();
+                lookUpEdit1.Properties.ValueMember = "fValue";
+                lookUpEdit1.Properties.DisplayMember = "fValueDesc";
+                searchLookUpEdit1.Properties.NullText = "";
+                lookUpEdit1.Properties.DataSource = n.GetStore(t);
+                gridControl2.DataSource = barlist;
+                gridView2.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.View_Common1_CustomDrawRowIndicator);
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
 
         }
@@ -43,15 +50,22 @@ namespace scan
 
         private void lookUpEdit1_EditValueChanged(object sender, EventArgs e)
         {
-          List<t_INVD_StkOutLogMst> data= so.Query_fStoutLogNo(lookUpEdit1.EditValue.ToString());
-            textEdit1.Text = "";
-            textEdit2.Text = "";
-            textEdit3.Text = "";
-            searchLookUpEdit1.Properties.ValueMember = "fStkOutLogNo";
-            searchLookUpEdit1.Properties.DisplayMember = "fStkOutLogNo";
-            searchLookUpEdit1.Properties.DataSource = data;
-            searchLookUpEdit1.Properties.NullText = "";
+            try
+            {
 
+
+                List<t_INVD_StkOutLogMst> data = so.Query_fStoutLogNo(lookUpEdit1.EditValue.ToString());
+                textEdit1.Text = "";
+                textEdit2.Text = "";
+                textEdit3.Text = "";
+                searchLookUpEdit1.Properties.ValueMember = "fStkOutLogNo";
+                searchLookUpEdit1.Properties.DisplayMember = "fStkOutLogNo";
+                searchLookUpEdit1.Properties.DataSource = data;
+                searchLookUpEdit1.Properties.NullText = "";
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private void View_Common1_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
         {
@@ -63,16 +77,23 @@ namespace scan
 
         private void searchLookUpEdit1_EditValueChanged(object sender, EventArgs e)
         {
-            List<fStoutLogNoList> data = so.Query_list(searchLookUpEdit1.EditValue.ToString());
-            textEdit1.Text = data[0].fDlvNo;
-            textEdit2.Text = data[0].fCCode;
-            textEdit3.Text = data[0].fCName; ;
-            List<V_INVD_StkOutLogItemSum> product = so.Query_product(searchLookUpEdit1.EditValue.ToString());
-            gridControl1.DataSource = product;
-            searchControl1.Enabled = false;
+            try
+            {
 
-            LoadData(sf.Load(searchLookUpEdit1.EditValue.ToString()));
 
+                List<fStoutLogNoList> data = so.Query_list(searchLookUpEdit1.EditValue.ToString());
+                textEdit1.Text = data[0].fDlvNo;
+                textEdit2.Text = data[0].fCCode;
+                textEdit3.Text = data[0].fCName; ;
+                List<V_INVD_StkOutLogItemSum> product = so.Query_product(searchLookUpEdit1.EditValue.ToString());
+                gridControl1.DataSource = product;
+                searchControl1.Enabled = false;
+
+                LoadData(sf.Load(searchLookUpEdit1.EditValue.ToString()));
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
 
 
@@ -151,12 +172,6 @@ namespace scan
 
 
                             }
-
-
-
-
-
-                               
                             
                             
                         }
@@ -180,14 +195,16 @@ namespace scan
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("请检查网络");
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+
+            
             if (searchLookUpEdit1.Text.Trim() != "")
             {
                 if (gridView1.RowCount > 0)
@@ -213,7 +230,15 @@ namespace scan
 
         private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            delbarlist(0);
+            try
+            {
+                delbarlist(0);
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void gridControl2_Click(object sender, EventArgs e)

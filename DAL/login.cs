@@ -105,7 +105,11 @@ namespace DAL
 
 
             }
-            catch(Exception ex)
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                throw new System.Data.Entity.Core.EntityException("请检查网络！");
+            }
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }

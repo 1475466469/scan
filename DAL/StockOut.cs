@@ -27,11 +27,15 @@ namespace DAL
             {
                 List<t_INVD_StkOutLogMst> list = db.t_INVD_StkOutLogMst.Where(u => u.fStkCode == fStkCode & u.fScanFlag=="0" & u.fIfPost == "0" & u.fIfCancel=="0").ToList();
                 return list;
-            }catch(Exception ex)
+            }
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                throw new System.Data.Entity.Core.EntityException("请检查网络！");
+            }
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
-
 
         }
         public List<fStoutLogNoList> Query_list(string fStkOutLogNo)
@@ -66,7 +70,11 @@ namespace DAL
 
                 return result;
             }
-            catch(Exception ex)
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                throw new System.Data.Entity.Core.EntityException("请检查网络！");
+            }
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
@@ -83,19 +91,36 @@ namespace DAL
                 List<V_INVD_StkOutLogItemSum> data = db.V_INVD_StkOutLogItemSum.Where(u => u.fStkOutLogNo == fStkOutLogNo & u.fStyleName == "品牌专享款").ToList();
 
                 return data;
-            }catch(Exception ex)
+            }
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                throw new System.Data.Entity.Core.EntityException("请检查网络！");
+            }
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
-            
+
         }
 
         //
 
         public t_INVD_StkOutLogItem GetFordNo(string fStkOutLogNo)
         {
-            t_INVD_StkOutLogItem list = db.t_INVD_StkOutLogItem.Where(u => u.fStkOutLogNo == fStkOutLogNo).FirstOrDefault();
-            return list;
+            try
+            {
+                t_INVD_StkOutLogItem list = db.t_INVD_StkOutLogItem.Where(u => u.fStkOutLogNo == fStkOutLogNo).FirstOrDefault();
+                return list;
+            }
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                throw new System.Data.Entity.Core.EntityException("请检查网络！");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
         }
 
 

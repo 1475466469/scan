@@ -57,10 +57,14 @@ namespace DAL
                     fOrdNo = list.fOrdNo,
                     fPackNo = list.fPackNo
                 };
-            }catch(Exception ex)
+            }
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                throw new System.Data.Entity.Core.EntityException("请检查网络！");
+            }
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
-                
             }
 
             //BarcodeDetial n = new BarcodeDetial();

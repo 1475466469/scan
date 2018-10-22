@@ -31,11 +31,8 @@ namespace scan
             {
                 login();
             }
-            catch (System.Data.Entity.Core.EntityException ex)//捕获网络异常
-            {
-                loginLoad.Hide();
-                MessageBox.Show(ex.Message);
-            }catch(Exception ex)
+            
+            catch(Exception ex)
             {
                 loginLoad.Hide();
                 MessageBox.Show(ex.Message);
@@ -48,10 +45,13 @@ namespace scan
        
         private void Pwd_KeyUp(object sender, KeyEventArgs e)
         {
-           
+            try
+            {
+
+
                 if (e.KeyCode.GetHashCode() == 13)
                 {
-                    
+
                     if (Usrid.Text.Trim() != "")
                     {
                         if (Pwd.Text.Trim() != "")
@@ -70,6 +70,10 @@ namespace scan
                         MessageBox.Show("请输入用户名！");
                     }
                 }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             
         }
 

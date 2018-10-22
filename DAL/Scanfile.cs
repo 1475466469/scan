@@ -23,35 +23,64 @@ namespace DAL
 
                 return db.SaveChanges();
             }
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                throw new System.Data.Entity.Core.EntityException("请检查网络！");
+            }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
-            
+
 
 
 
         }
         public void del(string id)
         {
-            List<DO_t_TemporaryScan> data = db.DO_t_TemporaryScan.Where(u => u.fStOutLogNo == id).ToList();
-            if (data.Count > 0)
+            try
             {
-                foreach (DO_t_TemporaryScan item in data)
+
+
+                List<DO_t_TemporaryScan> data = db.DO_t_TemporaryScan.Where(u => u.fStOutLogNo == id).ToList();
+                if (data.Count > 0)
                 {
-                    db.DO_t_TemporaryScan.Remove(item);
+                    foreach (DO_t_TemporaryScan item in data)
+                    {
+                        db.DO_t_TemporaryScan.Remove(item);
+                    }
+                    db.SaveChanges();
                 }
-                db.SaveChanges();
             }
-           
-           
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                throw new System.Data.Entity.Core.EntityException("请检查网络！");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
 
         }
 
         public List<DO_t_TemporaryScan>  Load(string id)
         {
-            List<DO_t_TemporaryScan> list = db.DO_t_TemporaryScan.Where(u => u.fStOutLogNo == id).ToList();
-            return list;
+            try
+            {
+
+
+                List<DO_t_TemporaryScan> list = db.DO_t_TemporaryScan.Where(u => u.fStOutLogNo == id).ToList();
+                return list;
+            }
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                throw new System.Data.Entity.Core.EntityException("请检查网络！");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
 
         }
 
