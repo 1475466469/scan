@@ -29,6 +29,9 @@ namespace BLL
         {
             return so.GetFordNo(fStkOutLogNo);
         }
-
+        public void Save(List<Do_t_dious_Scan> list)
+        {
+            so.Save(list);
+        }
     }
 }

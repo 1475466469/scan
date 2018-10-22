@@ -122,7 +122,46 @@ namespace DAL
             }
 
         }
+        
+        /// <summary>
+        /// 扫描完成后插入表
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public void Save(List<Do_t_dious_Scan> list)
+        {
+            try
+            {
 
+                foreach (Do_t_dious_Scan item in list)
+                {
+                    db.Do_t_dious_Scan.Add(item);
+                }
+                DCF19Entities db2 = new DCF19Entities();
+                t_INVD_StkOutLogMst tsm = db2.t_INVD_StkOutLogMst.Where(u => u.fStkOutLogNo=="575201810100042").FirstOrDefault();
+                tsm.fScanFlag = "1";
+                tsm.fScanDate = DateTime.Now;
+                db.SaveChanges();
+                db2.SaveChanges();
+
+
+            }
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                throw new System.Data.Entity.Core.EntityException("请检查网络！");
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            {
+                throw new System.Data.Entity.Infrastructure.DbUpdateException("请不要重复扫描");
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+
+        }
 
 
 

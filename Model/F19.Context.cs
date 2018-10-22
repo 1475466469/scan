@@ -60,6 +60,8 @@ public partial class DCF19Entities : DbContext
 
     public virtual DbSet<t_INVD_StkOutLogItem> t_INVD_StkOutLogItem { get; set; }
 
+    public virtual DbSet<Do_t_dious_Scan> Do_t_dious_Scan { get; set; }
+
 }
 
 }

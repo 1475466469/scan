@@ -21,6 +21,7 @@ namespace scan
         private BarcodeBLL bc = new BarcodeBLL();
         private ScanfileBLL sf = new ScanfileBLL();
         private List<BarcodeDetial> barlist = new List<BarcodeDetial>();
+        private List<V_INVD_StkOutLogItemSum> product_2;
         public Form2( )
         {
             InitializeComponent();
@@ -85,8 +86,8 @@ namespace scan
                 textEdit1.Text = data[0].fDlvNo;
                 textEdit2.Text = data[0].fCCode;
                 textEdit3.Text = data[0].fCName; ;
-                List<V_INVD_StkOutLogItemSum> product = so.Query_product(searchLookUpEdit1.EditValue.ToString());
-                gridControl1.DataSource = product;
+                product_2 = so.Query_product(searchLookUpEdit1.EditValue.ToString());
+                gridControl1.DataSource = product_2;
                 searchControl1.Enabled = false;
 
                 LoadData(sf.Load(searchLookUpEdit1.EditValue.ToString()));
@@ -426,30 +427,82 @@ namespace scan
 
         private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            List<V_INVD_StkOutLogItemSum> product = so.Query_product(searchLookUpEdit1.EditValue.ToString());
-
-
-            for(int i = 0; i < product.Count; i++)
+            try
             {
-
-                int row = barlist.Count(u => u.fGoodsCode == product[i].fGoodsCode);
-               
-               if(row > (int)product[i].fPlanOutQty)
+                if (product_2.Count>0)
                 {
-                    MessageBox.Show("品号：" + product[i].fGoodsCode + "多出" + (row - (int)product[i].fPlanOutQty) + "套");
-                    return;
 
 
-                }else if(row < (int)product[i].fPlanOutQty)
-                {
-                    MessageBox.Show("品号：" + product[i].fGoodsCode + "差" + ( (int)product[i].fPlanOutQty-row) + "套");
-                    return;
+                    
+
+
+                    List<V_INVD_StkOutLogItemSum> product = so.Query_product(searchLookUpEdit1.EditValue.ToString());
+
+
+                    for (int i = 0; i < product.Count; i++)
+                    {
+
+                        int row = barlist.Count(u => u.fGoodsCode == product[i].fGoodsCode);
+
+                        if (row > (int)product[i].fPlanOutQty)
+                        {
+                            MessageBox.Show("品号：" + product[i].fGoodsCode + "多出" + (row - (int)product[i].fPlanOutQty) + "套");
+                            return;
+
+
+                        }
+                        else if (row < (int)product[i].fPlanOutQty)
+                        {
+                            MessageBox.Show("品号：" + product[i].fGoodsCode + "差" + ((int)product[i].fPlanOutQty - row) + "套");
+                            return;
+                        }
+
+
+                    }
+                    List<Do_t_dious_Scan> ts = new List<Do_t_dious_Scan>();
+                    foreach (BarcodeDetial item in barlist)
+                    {
+                        ts.Add(
+                        new Do_t_dious_Scan()
+                        {
+                            fStOutLogNo = product[0].fStkOutLogNo,
+                            fOrdNo = item.fOrdNo,
+                            fBarcode = item.fBarcode,
+                            Date = DateTime.Now.ToString("d"),
+                            fGoodsCode = item.fGoodsCode,
+                            fGoodsName = item.fGoodsName
+                        });
+                    }
+                    so.Save(ts);
+                    MessageBox.Show("成功入库");
+                    //更新出库单选择框
+                   
+                    List<t_INVD_StkOutLogMst> data = so.Query_fStoutLogNo(lookUpEdit1.EditValue.ToString());
+                    textEdit1.Text = "";
+                    textEdit2.Text = "";
+                    textEdit3.Text = "";
+                    searchLookUpEdit1.Properties.ValueMember = "fStkOutLogNo";
+                    searchLookUpEdit1.Properties.DisplayMember = "fStkOutLogNo";
+                    searchLookUpEdit1.Properties.DataSource = data;
+                    searchLookUpEdit1.Properties.NullText = "";
+                    
+                    //清空扫描结果
+                    barlist.Clear();
+                    gridControl2.RefreshDataSource();
+                    //清空参考产品
+
+                    product_2.Clear();
+                    gridControl1.RefreshDataSource();
                 }
-
-                
+                else
+                {
+                    MessageBox.Show("请选择需扫描的出库单");
+                }
             }
-
-            MessageBox.Show("全部通过");
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.GetType().ToString());
+            }
 
 
 

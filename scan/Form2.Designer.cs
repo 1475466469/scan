@@ -160,7 +160,7 @@
             // 
             // searchLookUpEdit1
             // 
-            this.searchLookUpEdit1.EditValue = "[]";
+            this.searchLookUpEdit1.EditValue = "";
             this.searchLookUpEdit1.Location = new System.Drawing.Point(263, 20);
             this.searchLookUpEdit1.Name = "searchLookUpEdit1";
             this.searchLookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -303,6 +303,7 @@
             this.barButtonItem3.Caption = "开始扫描";
             this.barButtonItem3.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.Glyph")));
             this.barButtonItem3.Id = 2;
+            this.barButtonItem3.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A));
             this.barButtonItem3.Name = "barButtonItem3";
             toolTipTitleItem2.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
             toolTipTitleItem2.Appearance.Options.UseImage = true;
@@ -321,6 +322,7 @@
             this.barButtonItem7.Caption = "完成扫描";
             this.barButtonItem7.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.Glyph")));
             this.barButtonItem7.Id = 6;
+            this.barButtonItem7.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D));
             this.barButtonItem7.Name = "barButtonItem7";
             toolTipTitleItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
             toolTipTitleItem4.Appearance.Options.UseImage = true;
@@ -340,6 +342,7 @@
             this.barButtonItem8.Enabled = false;
             this.barButtonItem8.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem8.Glyph")));
             this.barButtonItem8.Id = 7;
+            this.barButtonItem8.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S));
             this.barButtonItem8.Name = "barButtonItem8";
             toolTipTitleItem6.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
             toolTipTitleItem6.Appearance.Options.UseImage = true;
@@ -489,6 +492,7 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // fStkOutLogNo
             // 
@@ -606,6 +610,7 @@
             this.gridView2.OptionsBehavior.Editable = false;
             this.gridView2.OptionsNavigation.AutoFocusNewRow = true;
             this.gridView2.OptionsSelection.MultiSelect = true;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
             // 
             // fPackNo
             // 

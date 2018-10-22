@@ -52,6 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BarcodeDetial.cs" />
+    <Compile Include="Do_t_dious_Scan.cs">
+      <DependentUpon>F19.tt</DependentUpon>
+    </Compile>
     <Compile Include="DO_t_TemporaryScan.cs">
       <DependentUpon>F19.tt</DependentUpon>
     </Compile>

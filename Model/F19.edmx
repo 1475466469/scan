@@ -5,6 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DCF19Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Do_t_dious_Scan">
+          <Key>
+            <PropertyRef Name="fBarcode" />
+          </Key>
+          <Property Name="fStOutLogNo" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="fOrdNo" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="fBarcode" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Date" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="fGoodsCode" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="fGoodsName" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
         <EntityType Name="DO_t_TemporaryScan">
           <Key>
             <PropertyRef Name="fBarcode" />
@@ -1026,6 +1037,7 @@
           <Property Name="fStyleName" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityContainer Name="DCF19ModelStoreContainer">
+          <EntitySet Name="Do_t_dious_Scan" EntityType="Self.Do_t_dious_Scan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DO_t_TemporaryScan" EntityType="Self.DO_t_TemporaryScan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_ADMM_UsrDataRightItem" EntityType="Self.t_ADMM_UsrDataRightItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_ADMM_UsrDataRightMst" EntityType="Self.t_ADMM_UsrDataRightMst" Schema="dbo" store:Type="Tables" />
@@ -1127,6 +1139,7 @@
           <EntitySet Name="t_BCMM_BarcodeMst" EntityType="DCF19Model.t_BCMM_BarcodeMst" />
           <EntitySet Name="DO_t_TemporaryScan" EntityType="DCF19Model.DO_t_TemporaryScan" />
           <EntitySet Name="t_INVD_StkOutLogItem" EntityType="DCF19Model.t_INVD_StkOutLogItem" />
+          <EntitySet Name="Do_t_dious_Scan" EntityType="DCF19Model.Do_t_dious_Scan" />
         </EntityContainer>
         <EntityType Name="t_ADMM_UsrDataRightItem">
           <Key>
@@ -2098,6 +2111,17 @@
           <Property Name="fDGStkInQty" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
           <Property Name="fDGStkInDate" Type="DateTime" Precision="3" />
           <Property Name="fDGStkInUsrName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Do_t_dious_Scan">
+          <Key>
+            <PropertyRef Name="fBarcode" />
+          </Key>
+          <Property Name="fStOutLogNo" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="fOrdNo" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="fBarcode" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="fGoodsCode" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="fGoodsName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3116,6 +3140,18 @@
                 <ScalarProperty Name="fOriSNo" ColumnName="fOriSNo" />
                 <ScalarProperty Name="fSNo" ColumnName="fSNo" />
                 <ScalarProperty Name="fStkOutLogNo" ColumnName="fStkOutLogNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Do_t_dious_Scan">
+            <EntityTypeMapping TypeName="DCF19Model.Do_t_dious_Scan">
+              <MappingFragment StoreEntitySet="Do_t_dious_Scan">
+                <ScalarProperty Name="fGoodsName" ColumnName="fGoodsName" />
+                <ScalarProperty Name="fGoodsCode" ColumnName="fGoodsCode" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="fBarcode" ColumnName="fBarcode" />
+                <ScalarProperty Name="fOrdNo" ColumnName="fOrdNo" />
+                <ScalarProperty Name="fStOutLogNo" ColumnName="fStOutLogNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

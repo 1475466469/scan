@@ -19,6 +19,7 @@
         <EntityTypeShape EntityType="DCF19Model.t_BCMM_BarcodeMst" Width="1.5" PointX="14.375" PointY="0.75" />
         <EntityTypeShape EntityType="DCF19Model.DO_t_TemporaryScan" Width="1.5" PointX="14.375" PointY="8.75" />
         <EntityTypeShape EntityType="DCF19Model.t_INVD_StkOutLogItem" Width="1.5" PointX="14.375" PointY="12.75" />
+        <EntityTypeShape EntityType="DCF19Model.Do_t_dious_Scan" Width="1.5" PointX="16.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
