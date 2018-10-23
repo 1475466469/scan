@@ -23,6 +23,7 @@ namespace scan
 
         }
         private loginBLL n = new loginBLL();
+        private Log log = new Log();
         private void checkButton1_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -30,12 +31,13 @@ namespace scan
             try
             {
                 login();
+               
             }
-            
             catch(Exception ex)
             {
                 loginLoad.Hide();
                 MessageBox.Show(ex.Message);
+                log.Wirtefile(Usrid.Text + "登陆引发异常："+ex.StackTrace);
             }
             
         }
@@ -73,6 +75,7 @@ namespace scan
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                log.Wirtefile(Usrid.Text + "登陆引发异常：" + ex.Message);
             }
             
         }
@@ -90,15 +93,16 @@ namespace scan
                     {
 
                         this.Hide();
-                        
-                        new Form2(admin).ShowDialog();
+                    log.Wirtefile(Usrid.Text + "登陆成功！");
+                    new Form2(admin).ShowDialog();
 
                     }
                     else
                     {
                         
                         MessageBox.Show("用户名或密码错误");
-                    }
+                    log.Wirtefile(Usrid.Text + "登陆用户名或密码错误");
+                }
                     loginLoad.Hide();
 
                

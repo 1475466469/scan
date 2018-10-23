@@ -12,7 +12,7 @@ namespace DAL
     {
         private DCF19Entities db = new DCF19Entities();
         private t_ADMM_UsrMst t = new t_ADMM_UsrMst();
-
+       
         public Login()
         {
         }

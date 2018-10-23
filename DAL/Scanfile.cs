@@ -14,6 +14,7 @@ namespace DAL
         {
             try
             {
+
                 foreach (DO_t_TemporaryScan item in list)
                 {
                     db.DO_t_TemporaryScan.Add(item);
