@@ -160,7 +160,6 @@
             // 
             // searchLookUpEdit1
             // 
-            this.searchLookUpEdit1.EditValue = "";
             this.searchLookUpEdit1.Location = new System.Drawing.Point(263, 20);
             this.searchLookUpEdit1.Name = "searchLookUpEdit1";
             this.searchLookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {

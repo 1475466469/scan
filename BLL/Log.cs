@@ -12,9 +12,7 @@ namespace BLL
         {
             try
             {
-
-
-                FileStream fs = new FileStream(Directory.GetCurrentDirectory() + "\\log.txt", FileMode.Append);
+                FileStream fs = new FileStream(Directory.GetCurrentDirectory() + "\\log.log", FileMode.Append);
                 StreamWriter sw = new StreamWriter(fs);
                 sw.WriteLine(DateTime.Now + ":" + str);
                 sw.Close();

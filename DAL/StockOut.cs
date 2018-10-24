@@ -132,13 +132,13 @@ namespace DAL
         {
             try
             {
-
                 foreach (Do_t_dious_Scan item in list)
                 {
                     db.Do_t_dious_Scan.Add(item);
                 }
+                string fStOutLogNo = list[0].fStOutLogNo;
                 DCF19Entities db2 = new DCF19Entities();
-                t_INVD_StkOutLogMst tsm = db2.t_INVD_StkOutLogMst.Where(u => u.fStkOutLogNo=="575201810100042").FirstOrDefault();
+                t_INVD_StkOutLogMst tsm = db2.t_INVD_StkOutLogMst.Where(u => u.fStkOutLogNo== fStOutLogNo).FirstOrDefault();
                 tsm.fScanFlag = "1";
                 tsm.fScanDate = DateTime.Now;
                 db.SaveChanges();
