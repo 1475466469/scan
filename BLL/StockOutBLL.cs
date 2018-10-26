@@ -33,5 +33,9 @@ namespace BLL
         {
             so.Save(list);
         }
+        public void updateStats(string fStkOutLogNo)
+        {
+            so.updateStats(fStkOutLogNo);
+        }
     }
 }

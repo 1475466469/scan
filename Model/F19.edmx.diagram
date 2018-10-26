@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="DCF19Model.t_ADMM_UsrDataRightMst" Width="1.5" PointX="5.375" PointY="0.75" />
         <EntityTypeShape EntityType="DCF19Model.t_ADMM_UsrItem" Width="1.5" PointX="3.375" PointY="5.75" />
         <EntityTypeShape EntityType="DCF19Model.t_BOMM_GoodsMst" Width="1.5" PointX="5.375" PointY="5.75" />
-        <EntityTypeShape EntityType="DCF19Model.t_INVD_StkOutLogMst" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DCF19Model.t_INVD_StkOutLogMst" Width="2" PointX="7.375" PointY="0.75" />
         <EntityTypeShape EntityType="DCF19Model.t_COPD_DlvMst" Width="1.5" PointX="9.75" PointY="0.75" />
         <EntityTypeShape EntityType="DCF19Model.t_CRMM_CstMst" Width="1.5" PointX="0.75" PointY="10.75" />
         <EntityTypeShape EntityType="DCF19Model.V_INVD_StkOutLogItemSum" Width="1.5" PointX="12.375" PointY="0.75" />

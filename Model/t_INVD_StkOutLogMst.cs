@@ -132,6 +132,10 @@ public partial class t_INVD_StkOutLogMst
 
     public string C_x_f006 { get; set; }
 
+    public string C_x_f008 { get; set; }
+
+    public Nullable<System.DateTime> C_x_f009 { get; set; }
+
 }
 
 }

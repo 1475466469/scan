@@ -8,7 +8,7 @@ namespace BLL
 {
   public  class Log
     {
-        public void Wirtefile(string str)
+        public  void Wirtefile(string str)
         {
             try
             {

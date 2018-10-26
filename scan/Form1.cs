@@ -18,7 +18,7 @@ namespace scan
         public Form1()
         {
             InitializeComponent();
-           
+            
 
 
         }
@@ -41,9 +41,6 @@ namespace scan
             }
             
         }
-
-        
-
        
         private void Pwd_KeyUp(object sender, KeyEventArgs e)
         {
@@ -86,8 +83,6 @@ namespace scan
             if (Usrid.Text.Trim() != "" & Pwd.Text.Trim() != "")
             {
 
-                
-
                t_ADMM_UsrMst admin = n.LoginHandle(Usrid.Text.Trim(), Pwd.Text.Trim());
                     if (admin != null)
                     {
@@ -99,26 +94,34 @@ namespace scan
                     }
                     else
                     {
-                        
                         MessageBox.Show("用户名或密码错误");
                     log.Wirtefile(Usrid.Text + "登陆用户名或密码错误");
                 }
                     loginLoad.Hide();
-
-               
             }
             else
             {
                 loginLoad.Hide();
                 MessageBox.Show("用户名或密码不能为空");
-
             }
-           
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
-    }
+
+        private void panelControl1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Usrid_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+       
+
+
+        }
 }

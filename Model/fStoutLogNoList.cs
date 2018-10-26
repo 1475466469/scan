@@ -11,6 +11,7 @@ namespace Model
         public string fDlvNo { get; set; }
         public string fCCode { get; set; }
         public string fCName { get; set; }
+        public string _x_f008 { get; set; }
 
 
 

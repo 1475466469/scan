@@ -85,18 +85,29 @@ namespace scan
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
             }
         }
-
         private void searchLookUpEdit1_EditValueChanged(object sender, EventArgs e)
         {
             try
             {
 
-
                 List<fStoutLogNoList> data = so.Query_list(searchLookUpEdit1.Text.Trim());
                 log.Wirtefile(admin.fUsrID + "选择出库单:" + searchLookUpEdit1.Text.Trim());
                 textEdit1.Text = data[0].fDlvNo;
                 textEdit2.Text = data[0].fCCode;
-                textEdit3.Text = data[0].fCName; ;
+                textEdit3.Text = data[0].fCName;
+               
+                //if (data[0]._x_f008=="0")
+                //{
+                //    //MessageBox.Show("s申请中");
+                //    barButtonItem2.Caption = "正在申请...";
+                //    barButtonItem2.Enabled = false;
+                //}
+                //else if(data[0]._x_f008 == null)
+                //{
+                //    barButtonItem2.Caption = "申请特批";
+                //    barButtonItem2.Enabled = true;
+                //}
+              
                 product_2 = so.Query_product(searchLookUpEdit1.Text.Trim());
                 gridControl1.DataSource = product_2;
                 searchControl1.Enabled = false;
@@ -319,7 +330,7 @@ namespace scan
                             saveDate = DateTime.Now.ToString("d")
                         };
 
-                        log.Wirtefile(admin.fUsrID + "保存条码："+ fBarcode);
+                        log.Wirtefile(admin.fUsrID + "保存条码："+ts.fBarcode);
                         files.Add(ts);
 
                     }
@@ -329,7 +340,6 @@ namespace scan
                         MessageBox.Show("保存成功");
                         log.Wirtefile(admin.fUsrID + "保存临时文件共：" + barlist.Count+"行");
                     }
-
                 }
 
             }
@@ -529,7 +539,6 @@ namespace scan
 
                         List<V_INVD_StkOutLogItemSum> product = so.Query_product(searchLookUpEdit1.Text.Trim());
 
-
                         for (int i = 0; i < product.Count; i++)
                         {
 
@@ -538,9 +547,7 @@ namespace scan
                             if (row > (int)product[i].fPlanOutQty)
                             {
                                 MessageBox.Show("品号：" + product[i].fGoodsCode + "多出" + (row - (int)product[i].fPlanOutQty) + "套");
-
                                 return;
-
 
                             }
                             else if (row < (int)product[i].fPlanOutQty)
@@ -548,7 +555,6 @@ namespace scan
                                 MessageBox.Show("品号：" + product[i].fGoodsCode + "差" + ((int)product[i].fPlanOutQty - row) + "套");
                                 return;
                             }
-
 
                         }
                         List<Do_t_dious_Scan> ts = new List<Do_t_dious_Scan>();
@@ -569,17 +575,14 @@ namespace scan
                         MessageBox.Show("成功入库");
                         log.Wirtefile(admin.fUsrID + "出库单：" + searchLookUpEdit1.Text.Trim() + ",扫描完毕成功入库");
                         //更新出库单选择框
-
                         List<t_INVD_StkOutLogMst> data = so.Query_fStoutLogNo(lookUpEdit1.EditValue.ToString());
                         textEdit1.Text = "";
                         textEdit2.Text = "";
                         textEdit3.Text = "";
-                        
                         searchLookUpEdit1.Properties.ValueMember = "fStkOutLogNo";
                         searchLookUpEdit1.Properties.DisplayMember = "fStkOutLogNo";
                         searchLookUpEdit1.Properties.DataSource = data;
                         searchLookUpEdit1.Properties.NullText = "";
-
                         //清空扫描结果
                         barlist.Clear();
                         gridControl2.RefreshDataSource();
@@ -601,13 +604,75 @@ namespace scan
             {
                 MessageBox.Show(ex.Message);
                 log.Wirtefile(admin.fUsrID + "点击完成扫描出现异常：" + ex.Message);
-
             }
-
         }
-
         private void searchControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+
+            try
+            {
+                if (searchLookUpEdit1.Text.Trim() != "")
+                {
+
+                    DialogResult result = XtraMessageBox.Show("确定要特批吗？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (result == DialogResult.Cancel)
+                    {
+                       
+                    }
+                    else
+                    {
+
+
+                        so.updateStats(searchLookUpEdit1.Text.Trim());
+                        MessageBox.Show("成功特批！");
+                        log.Wirtefile(admin.fUsrID + "成功特批出库单：" + searchLookUpEdit1.Text.Trim());
+                        List<t_INVD_StkOutLogMst> data = so.Query_fStoutLogNo(lookUpEdit1.EditValue.ToString());
+                        textEdit1.Text = "";
+                        textEdit2.Text = "";
+                        textEdit3.Text = "";
+                        searchLookUpEdit1.Properties.ValueMember = "fStkOutLogNo";
+                        searchLookUpEdit1.Properties.DisplayMember = "fStkOutLogNo";
+                        searchLookUpEdit1.Properties.DataSource = data;
+                        searchLookUpEdit1.Properties.NullText = "";
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("请选择出库单");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                log.Wirtefile(admin.fUsrID + "申请特批时出现异常：" + ex.Message);
+            }
+        }
+
+        private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+            
+        }
+        //窗口关闭事件
+        protected override void OnClosing(CancelEventArgs e)
+        {
+
+          DialogResult result=  XtraMessageBox.Show("确定要退出吗？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.Cancel)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                log.Wirtefile(admin.fUsrID + "退出程序");
+                Application.Exit();
+            }
+
         }
     }
 }

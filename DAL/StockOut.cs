@@ -25,7 +25,7 @@ namespace DAL
         {
             try
             {
-                List<t_INVD_StkOutLogMst> list = db.t_INVD_StkOutLogMst.Where(u => u.fStkCode == fStkCode & u.fScanFlag=="0" & u.fIfPost == "0" & u.fIfCancel=="0").ToList();
+                List<t_INVD_StkOutLogMst> list = db.t_INVD_StkOutLogMst.Where(u => u.fStkCode == fStkCode & u.fScanFlag=="0" & u.fIfPost == "0" & u.fIfCancel=="0" & u.C_x_f008!="1").ToList();
                 return list;
             }
             catch (System.Data.Entity.Core.EntityException)
@@ -54,7 +54,8 @@ namespace DAL
                                fStkOutLogNo = u.fStkOutLogNo,
                                fDlvNo = g.fDlvNo,
                                fCCode = k.fCCode,
-                               fCName = k.fCName
+                               fCName = k.fCName,
+                               _x_f008=u.C_x_f008
                            };
                 List<fStoutLogNoList> result = new List<fStoutLogNoList>();
                 foreach(var item in data)
@@ -64,6 +65,7 @@ namespace DAL
                     n.fDlvNo = item.fDlvNo;
                     n.fCCode = item.fCCode;
                     n.fCName = item.fCName;
+                    n._x_f008 = item._x_f008;
                     result.Add(n);
                 }
 
@@ -162,7 +164,29 @@ namespace DAL
 
 
         }
+        //出库单的申请特批
 
+
+        public void updateStats(string fStkOutLogNo)
+        {
+
+            try
+            {
+                t_INVD_StkOutLogMst tsm = db.t_INVD_StkOutLogMst.Where(u => u.fStkOutLogNo == fStkOutLogNo).FirstOrDefault();
+                tsm.C_x_f008 = "1";
+                tsm.C_x_f009 = DateTime.Now;
+                db.SaveChanges();
+            }
+            catch (System.Data.Entity.Core.EntityException)
+            {
+                throw new System.Data.Entity.Core.EntityException("请检查网络！");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
 
 
 

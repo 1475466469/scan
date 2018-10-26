@@ -14,12 +14,10 @@ namespace DAL
         {
             try
             {
-
                 foreach (DO_t_TemporaryScan item in list)
                 {
                     db.DO_t_TemporaryScan.Add(item);
                 }
-
                 return db.SaveChanges();
             }
             catch (System.Data.Entity.Core.EntityException)
@@ -30,17 +28,12 @@ namespace DAL
             {
                 throw new Exception(ex.Message);
             }
-
-
-
-
+            
         }
         public void del(string id)
         {
             try
             {
-
-
                 List<DO_t_TemporaryScan> data = db.DO_t_TemporaryScan.Where(u => u.fStOutLogNo == id).ToList();
                 if (data.Count > 0)
                 {
@@ -60,15 +53,12 @@ namespace DAL
                 throw new Exception(ex.Message);
             }
 
-
         }
 
         public List<DO_t_TemporaryScan>  Load(string id)
         {
             try
             {
-
-
                 List<DO_t_TemporaryScan> list = db.DO_t_TemporaryScan.Where(u => u.fStOutLogNo == id).ToList();
                 return list;
             }

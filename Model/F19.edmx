@@ -1009,6 +1009,8 @@
           <Property Name="_x_f004" Type="nvarchar" MaxLength="4000" />
           <Property Name="_x_f005" Type="nvarchar" MaxLength="4000" />
           <Property Name="_x_f006" Type="nvarchar" MaxLength="4000" />
+          <Property Name="_x_f008" Type="nvarchar" MaxLength="4000" />
+          <Property Name="_x_f009" Type="datetime" />
         </EntityType>
         <!--生成过程中发现错误:
 警告 6002: 表/视图“Demo.dbo.V_INVD_StkOutLogItemSum”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
@@ -1587,6 +1589,8 @@
           <Property Name="C_x_f004" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="C_x_f005" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="C_x_f006" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="C_x_f008" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="C_x_f009" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="t_COPD_DlvMst">
           <Key>
@@ -2557,6 +2561,8 @@
           <EntitySetMapping Name="t_INVD_StkOutLogMst">
             <EntityTypeMapping TypeName="DCF19Model.t_INVD_StkOutLogMst">
               <MappingFragment StoreEntitySet="t_INVD_StkOutLogMst">
+                <ScalarProperty Name="C_x_f009" ColumnName="_x_f009" />
+                <ScalarProperty Name="C_x_f008" ColumnName="_x_f008" />
                 <ScalarProperty Name="C_x_f006" ColumnName="_x_f006" />
                 <ScalarProperty Name="C_x_f005" ColumnName="_x_f005" />
                 <ScalarProperty Name="C_x_f004" ColumnName="_x_f004" />
