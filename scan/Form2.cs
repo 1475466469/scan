@@ -535,40 +535,36 @@ namespace scan
                 {
                     if (barlist.Count > 0)
                     {
-
-
                         List<V_INVD_StkOutLogItemSum> product = so.Query_product(searchLookUpEdit1.Text.Trim());
 
                         for (int i = 0; i < product.Count; i++)
                         {
-
                             int row = barlist.Count(u => u.fGoodsCode == product[i].fGoodsCode);
 
                             if (row > (int)product[i].fPlanOutQty)
                             {
                                 MessageBox.Show("品号：" + product[i].fGoodsCode + "多出" + (row - (int)product[i].fPlanOutQty) + "套");
                                 return;
-
                             }
                             else if (row < (int)product[i].fPlanOutQty)
                             {
                                 MessageBox.Show("品号：" + product[i].fGoodsCode + "差" + ((int)product[i].fPlanOutQty - row) + "套");
                                 return;
                             }
-
                         }
                         List<Do_t_dious_Scan> ts = new List<Do_t_dious_Scan>();
                         foreach (BarcodeDetial item in barlist)
                         {
-                            ts.Add(
+                         ts.Add(
                             new Do_t_dious_Scan()
                             {
-                                fStOutLogNo = product[0].fStkOutLogNo,
+                                fStkOutLogNo= product[0].fStkOutLogNo,
                                 fOrdNo = item.fOrdNo,
                                 fBarcode = item.fBarcode,
                                 Date = DateTime.Now.ToString("d"),
                                 fGoodsCode = item.fGoodsCode,
-                                fGoodsName = item.fGoodsName
+                                fGoodsName = item.fGoodsName,
+                                fOrdSNo= so.GetFsno(so.GetFordNo(searchLookUpEdit1.Text.Trim()).fOrdNo, item.fGoodsName)
                             });
                         }
                         so.Save(ts);
@@ -602,8 +598,9 @@ namespace scan
             }
             catch(Exception ex)
             {
+                //throw ex;
                 MessageBox.Show(ex.Message);
-                log.Wirtefile(admin.fUsrID + "点击完成扫描出现异常：" + ex.Message);
+              log.Wirtefile(admin.fUsrID + "点击完成扫描出现异常：" + ex.Message);
             }
         }
         private void searchControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -669,6 +666,7 @@ namespace scan
             }
             else
             {
+
                 log.Wirtefile(admin.fUsrID + "退出程序");
                 Application.Exit();
             }

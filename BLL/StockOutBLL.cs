@@ -37,5 +37,9 @@ namespace BLL
         {
             so.updateStats(fStkOutLogNo);
         }
+        public int GetFsno(string fOrdNo, string fGoodsName)
+        {
+          return  so.GetFsno(fOrdNo, fGoodsName);
+        }
     }
 }

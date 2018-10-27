@@ -18,7 +18,7 @@ using System;
 public partial class Do_t_dious_Scan
 {
 
-    public string fStOutLogNo { get; set; }
+    public string fStkOutLogNo { get; set; }
 
     public string fOrdNo { get; set; }
 
@@ -29,6 +29,8 @@ public partial class Do_t_dious_Scan
     public string fGoodsCode { get; set; }
 
     public string fGoodsName { get; set; }
+
+    public int fOrdSNo { get; set; }
 
 }
 

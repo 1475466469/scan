@@ -76,6 +76,7 @@
             this.checkButton1.Appearance.Font = ((System.Drawing.Font)(resources.GetObject("checkButton1.Appearance.Font")));
             this.checkButton1.Appearance.Options.UseFont = true;
             this.checkButton1.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
+            this.checkButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.checkButton1.ImageLocation = DevExpress.XtraEditors.ImageLocation.BottomCenter;
             this.checkButton1.Name = "checkButton1";
             this.checkButton1.CheckedChanged += new System.EventHandler(this.checkButton1_CheckedChanged);

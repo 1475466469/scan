@@ -138,7 +138,7 @@ namespace DAL
                 {
                     db.Do_t_dious_Scan.Add(item);
                 }
-                string fStOutLogNo = list[0].fStOutLogNo;
+                string fStOutLogNo = list[0].fStkOutLogNo;
                 DCF19Entities db2 = new DCF19Entities();
                 t_INVD_StkOutLogMst tsm = db2.t_INVD_StkOutLogMst.Where(u => u.fStkOutLogNo== fStOutLogNo).FirstOrDefault();
                 tsm.fScanFlag = "1";
@@ -186,6 +186,16 @@ namespace DAL
                 throw new Exception(ex.Message);
             }
 
+        }
+
+        //根据出库单号和品号获取订单行号
+
+        public int GetFsno(string fOrdNo, string fGoodsName)
+        {
+
+            t_INVD_StkOutLogItem tsm = db.t_INVD_StkOutLogItem.Where(u => u.fOrdNo == fOrdNo & u.fGoodsName == fGoodsName).FirstOrDefault();
+
+            return tsm.fOrdSNo;
         }
 
 

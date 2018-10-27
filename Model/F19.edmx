@@ -9,12 +9,13 @@
           <Key>
             <PropertyRef Name="fBarcode" />
           </Key>
-          <Property Name="fStOutLogNo" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="fStkOutLogNo" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="fOrdNo" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="fBarcode" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Date" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="fGoodsCode" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="fGoodsName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="fOrdSNo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="DO_t_TemporaryScan">
           <Key>
@@ -2120,12 +2121,13 @@
           <Key>
             <PropertyRef Name="fBarcode" />
           </Key>
-          <Property Name="fStOutLogNo" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="fStkOutLogNo" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="fOrdNo" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="fBarcode" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Date" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="fGoodsCode" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="fGoodsName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="fOrdSNo" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3152,12 +3154,13 @@
           <EntitySetMapping Name="Do_t_dious_Scan">
             <EntityTypeMapping TypeName="DCF19Model.Do_t_dious_Scan">
               <MappingFragment StoreEntitySet="Do_t_dious_Scan">
+                <ScalarProperty Name="fOrdSNo" ColumnName="fOrdSNo" />
                 <ScalarProperty Name="fGoodsName" ColumnName="fGoodsName" />
                 <ScalarProperty Name="fGoodsCode" ColumnName="fGoodsCode" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="fBarcode" ColumnName="fBarcode" />
                 <ScalarProperty Name="fOrdNo" ColumnName="fOrdNo" />
-                <ScalarProperty Name="fStOutLogNo" ColumnName="fStOutLogNo" />
+                <ScalarProperty Name="fStkOutLogNo" ColumnName="fStkOutLogNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

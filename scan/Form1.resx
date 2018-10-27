@@ -244,7 +244,7 @@
     <value>Tahoma, 12pt</value>
   </data>
   <data name="checkButton1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>442, 117</value>
+    <value>449, 118</value>
   </data>
   <data name="checkButton1.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 75</value>
@@ -283,7 +283,7 @@
     <value>正在登陆 ...</value>
   </data>
   <data name="loginLoad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>222, 292</value>
+    <value>206, 281</value>
   </data>
   <data name="loginLoad.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>Yes</value>
