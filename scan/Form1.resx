@@ -151,31 +151,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelControl1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="Usrid.EditValue" xml:space="preserve">
-    <value>liaojq</value>
-  </data>
-  <data name="Usrid.Location" type="System.Drawing.Point, System.Drawing">
-    <value>222, 104</value>
-  </data>
-  <data name="Usrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 20</value>
-  </data>
-  <data name="Usrid.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;Usrid.Name" xml:space="preserve">
-    <value>Usrid</value>
-  </data>
-  <data name="&gt;&gt;Usrid.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v14.1, Version=14.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;Usrid.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;Usrid.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="labelControl2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -208,13 +184,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelControl2.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="Pwd.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="Pwd.EditValue" xml:space="preserve">
-    <value>123</value>
+    <value />
   </data>
   <data name="Pwd.Location" type="System.Drawing.Point, System.Drawing">
     <value>222, 184</value>
@@ -235,7 +211,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Pwd.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="checkButton1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -265,7 +241,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkButton1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="loginLoad.Appearance.BackColor" type="System.Drawing.Color, System.Drawing">
     <value>Transparent</value>
@@ -283,7 +259,7 @@
     <value>正在登陆 ...</value>
   </data>
   <data name="loginLoad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>206, 281</value>
+    <value>222, 285</value>
   </data>
   <data name="loginLoad.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>Yes</value>
@@ -310,6 +286,54 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;loginLoad.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="Usrid.Location" type="System.Drawing.Point, System.Drawing">
+    <value>222, 104</value>
+  </data>
+  <data name="Usrid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 20</value>
+  </data>
+  <data name="Usrid.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;Usrid.Name" xml:space="preserve">
+    <value>Usrid</value>
+  </data>
+  <data name="&gt;&gt;Usrid.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Usrid.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Usrid.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="checkBoxXpw.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxXpw.Location" type="System.Drawing.Point, System.Drawing">
+    <value>293, 241</value>
+  </data>
+  <data name="checkBoxXpw.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 16</value>
+  </data>
+  <data name="checkBoxXpw.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="checkBoxXpw.Text" xml:space="preserve">
+    <value>记住密码</value>
+  </data>
+  <data name="&gt;&gt;checkBoxXpw.Name" xml:space="preserve">
+    <value>checkBoxXpw</value>
+  </data>
+  <data name="&gt;&gt;checkBoxXpw.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxXpw.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;checkBoxXpw.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

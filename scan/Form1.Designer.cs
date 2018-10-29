@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.Usrid = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.Pwd = new DevExpress.XtraEditors.TextEdit();
             this.checkButton1 = new DevExpress.XtraEditors.CheckButton();
             this.loginLoad = new DevExpress.XtraWaitForm.ProgressPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.Usrid.Properties)).BeginInit();
+            this.Usrid = new System.Windows.Forms.ComboBox();
+            this.checkBoxXpw = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.Pwd.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,14 +45,6 @@
             this.labelControl1.Appearance.Font = ((System.Drawing.Font)(resources.GetObject("labelControl1.Appearance.Font")));
             this.labelControl1.Appearance.ForeColor = ((System.Drawing.Color)(resources.GetObject("labelControl1.Appearance.ForeColor")));
             this.labelControl1.Name = "labelControl1";
-            // 
-            // Usrid
-            // 
-            resources.ApplyResources(this.Usrid, "Usrid");
-            this.Usrid.Name = "Usrid";
-            this.Usrid.Properties.LookAndFeel.TouchUIMode = DevExpress.LookAndFeel.TouchUIMode.False;
-            this.Usrid.EditValueChanged += new System.EventHandler(this.Usrid_EditValueChanged);
-            this.Usrid.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Pwd_KeyUp);
             // 
             // labelControl2
             // 
@@ -92,20 +84,33 @@
             resources.ApplyResources(this.loginLoad, "loginLoad");
             this.loginLoad.Name = "loginLoad";
             // 
+            // Usrid
+            // 
+            this.Usrid.FormattingEnabled = true;
+            resources.ApplyResources(this.Usrid, "Usrid");
+            this.Usrid.Name = "Usrid";
+            this.Usrid.SelectedIndexChanged += new System.EventHandler(this.Usrid_SelectedIndexChanged);
+            // 
+            // checkBoxXpw
+            // 
+            resources.ApplyResources(this.checkBoxXpw, "checkBoxXpw");
+            this.checkBoxXpw.Name = "checkBoxXpw";
+            this.checkBoxXpw.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.Controls.Add(this.checkBoxXpw);
+            this.Controls.Add(this.Usrid);
             this.Controls.Add(this.loginLoad);
             this.Controls.Add(this.checkButton1);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.Pwd);
             this.Controls.Add(this.labelControl2);
-            this.Controls.Add(this.Usrid);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.Usrid.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Pwd.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -115,11 +120,12 @@
         #endregion
 
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.TextEdit Usrid;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit Pwd;
         private DevExpress.XtraEditors.CheckButton checkButton1;
         private DevExpress.XtraWaitForm.ProgressPanel loginLoad;
+        private System.Windows.Forms.ComboBox Usrid;
+        private System.Windows.Forms.CheckBox checkBoxXpw;
     }
 }
 
