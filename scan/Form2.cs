@@ -57,28 +57,7 @@ namespace scan
 
         }
 
-
-        //private void lookUpEdit1_EditValueChanged(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-
-
-        //        List<t_INVD_StkOutLogMst> data = so.Query_fStoutLogNo(lookUpEdit1.EditValue.ToString());
-        //        log.Wirtefile(admin.fUsrID + "切换仓库下拉框选择仓库：" + lookUpEdit1.EditValue.ToString());
-        //        textEdit1.Text = "";
-        //        textEdit2.Text = "";
-        //        textEdit3.Text = "";
-        //        searchLookUpEdit1.Properties.ValueMember = "fStkOutLogNo";
-        //        searchLookUpEdit1.Properties.DisplayMember = "fStkOutLogNo";
-        //        searchLookUpEdit1.Properties.DataSource = data;
-        //        searchLookUpEdit1.Properties.NullText = "";
-        //    }catch(Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //        log.Wirtefile(admin.fUsrID + "切换仓库下拉框选择仓库引发异常：" + ex.Message);
-        //    }
-        //}
+        
         private void View_Common1_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
         {
             if (e.Info.IsRowIndicator && e.RowHandle >= 0)
@@ -97,17 +76,7 @@ namespace scan
                 textEdit2.Text = data[0].fCCode;
                 textEdit3.Text = data[0].fCName;
                
-                //if (data[0]._x_f008=="0")
-                //{
-                //    //MessageBox.Show("s申请中");
-                //    barButtonItem2.Caption = "正在申请...";
-                //    barButtonItem2.Enabled = false;
-                //}
-                //else if(data[0]._x_f008 == null)
-                //{
-                //    barButtonItem2.Caption = "申请特批";
-                //    barButtonItem2.Enabled = true;
-                //}
+               
               
                 product_2 = so.Query_product(searchLookUpEdit1.Text.Trim());
                 gridControl1.DataSource = product_2;
@@ -328,7 +297,7 @@ namespace scan
                             fGoodsCode = item.fGoodsCode,
                             fSizeDesc = item.fSizeDesc,
                             fGoodsName = item.fGoodsName,
-                            saveDate = DateTime.Now.ToString("d")
+                            saveDate = DateTime.Now.ToString()
                         };
 
                         log.Wirtefile(admin.fUsrID + "保存条码："+ts.fBarcode);
@@ -562,7 +531,7 @@ namespace scan
                                 fStkOutLogNo= product[0].fStkOutLogNo,
                                 fOrdNo = item.fOrdNo,
                                 fBarcode = item.fBarcode,
-                                Date = DateTime.Now.ToString("d"),
+                                Date = DateTime.Now.ToString(),
                                 fGoodsCode = item.fGoodsCode,
                                 fGoodsName = item.fGoodsName,
                                 fOrdSNo= so.GetFsno(so.GetFordNo(searchLookUpEdit1.Text.Trim()).fOrdNo, item.fGoodsName)
@@ -654,13 +623,12 @@ namespace scan
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
-            
         }
         //窗口关闭事件
         protected override void OnClosing(CancelEventArgs e)
         {
 
-          DialogResult result=  XtraMessageBox.Show("确定要退出吗？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult result = XtraMessageBox.Show("确定要退出吗？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.Cancel)
             {
                 e.Cancel = true;
@@ -695,6 +663,28 @@ namespace scan
                 MessageBox.Show(ex.Message);
                 log.Wirtefile(admin.fUsrID + "切换仓库下拉框选择仓库引发异常：" + ex.Message);
             }
+        }
+
+
+        //注销
+        private void barButtonItem15_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Hide();
+            new Form1().ShowDialog();
+        }
+        //修改密码
+        private void barButtonItem14_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new Form3(admin).ShowDialog();
+        }
+
+        private void barButtonItem16_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void textEdit2_EditValueChanged(object sender, EventArgs e)
+        {
 
         }
     }

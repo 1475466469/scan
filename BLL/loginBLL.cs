@@ -29,5 +29,12 @@ namespace BLL
             return new Login().QueryStore(tsm);
 
         }
+
+
+        public void UpdatePwd(string usrid,string oldpwd, string pwd)
+        {
+
+           new Login(usrid).UpdatePwd(oldpwd, pwd);
+        }
     }
 }
