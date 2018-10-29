@@ -39,6 +39,7 @@ namespace scan
                 log.Wirtefile(t.fUsrID + "登陆成功打开主页面");
                 lookUpEdit1.Properties.ValueMember = "fValue";
                 lookUpEdit1.Properties.DisplayMember = "fValueDesc";
+                lookUpEdit1.Properties.NullText = "";
                 searchLookUpEdit1.Properties.NullText = "";
                 lookUpEdit1.Properties.DataSource = n.GetStore(t);
                 log.Wirtefile(t.fUsrID + "成功获取仓库");
@@ -57,27 +58,27 @@ namespace scan
         }
 
 
-        private void lookUpEdit1_EditValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
+        //private void lookUpEdit1_EditValueChanged(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
 
 
-                List<t_INVD_StkOutLogMst> data = so.Query_fStoutLogNo(lookUpEdit1.EditValue.ToString());
-                log.Wirtefile(admin.fUsrID + "切换仓库下拉框选择仓库：" + lookUpEdit1.EditValue.ToString());
-                textEdit1.Text = "";
-                textEdit2.Text = "";
-                textEdit3.Text = "";
-                searchLookUpEdit1.Properties.ValueMember = "fStkOutLogNo";
-                searchLookUpEdit1.Properties.DisplayMember = "fStkOutLogNo";
-                searchLookUpEdit1.Properties.DataSource = data;
-                searchLookUpEdit1.Properties.NullText = "";
-            }catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                log.Wirtefile(admin.fUsrID + "切换仓库下拉框选择仓库引发异常：" + ex.Message);
-            }
-        }
+        //        List<t_INVD_StkOutLogMst> data = so.Query_fStoutLogNo(lookUpEdit1.EditValue.ToString());
+        //        log.Wirtefile(admin.fUsrID + "切换仓库下拉框选择仓库：" + lookUpEdit1.EditValue.ToString());
+        //        textEdit1.Text = "";
+        //        textEdit2.Text = "";
+        //        textEdit3.Text = "";
+        //        searchLookUpEdit1.Properties.ValueMember = "fStkOutLogNo";
+        //        searchLookUpEdit1.Properties.DisplayMember = "fStkOutLogNo";
+        //        searchLookUpEdit1.Properties.DataSource = data;
+        //        searchLookUpEdit1.Properties.NullText = "";
+        //    }catch(Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //        log.Wirtefile(admin.fUsrID + "切换仓库下拉框选择仓库引发异常：" + ex.Message);
+        //    }
+        //}
         private void View_Common1_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
         {
             if (e.Info.IsRowIndicator && e.RowHandle >= 0)
@@ -669,6 +670,30 @@ namespace scan
 
                 log.Wirtefile(admin.fUsrID + "退出程序");
                 Application.Exit();
+            }
+
+        }
+
+        private void lookUpEdit1_EditValueChanged_1(object sender, EventArgs e)
+        {
+            try
+            {
+
+
+                List<t_INVD_StkOutLogMst> data = so.Query_fStoutLogNo(lookUpEdit1.EditValue.ToString());
+                log.Wirtefile(admin.fUsrID + "切换仓库下拉框选择仓库：" + lookUpEdit1.EditValue.ToString());
+                textEdit1.Text = "";
+                textEdit2.Text = "";
+                textEdit3.Text = "";
+                searchLookUpEdit1.Properties.ValueMember = "fStkOutLogNo";
+                searchLookUpEdit1.Properties.DisplayMember = "fStkOutLogNo";
+                searchLookUpEdit1.Properties.DataSource = data;
+                searchLookUpEdit1.Properties.NullText = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                log.Wirtefile(admin.fUsrID + "切换仓库下拉框选择仓库引发异常：" + ex.Message);
             }
 
         }

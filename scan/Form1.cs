@@ -28,8 +28,6 @@ namespace scan
         private Log log = new Log();
         private void checkButton1_CheckedChanged(object sender, EventArgs e)
         {
-
-
             try
             {
                 login();
@@ -43,26 +41,20 @@ namespace scan
             }
             
         }
-       
         private void Pwd_KeyUp(object sender, KeyEventArgs e)
         {
             try
             {
-
-
                 if (e.KeyCode.GetHashCode() == 13)
                 {
-
                     if (Usrid.Text.Trim() != "")
                     {
                         if (Pwd.Text.Trim() != "")
                         {
                             login();
-
                         }
                         else
                         {
-
                             MessageBox.Show("请输入密码！");
                         }
                     }
@@ -204,7 +196,6 @@ namespace scan
             try
             {
 
-
                 FileStream fs = new FileStream("usr.bin", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
                 if (fs.Length > 0)
                 {
@@ -237,9 +228,6 @@ namespace scan
 
       
     }
-
-
-
 
     [Serializable]
     public class UserInfo
