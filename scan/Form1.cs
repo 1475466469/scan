@@ -116,6 +116,14 @@ namespace scan
 
         }
 
+        protected override void OnClosing(CancelEventArgs e)
+        {
+
+            
+                Application.Exit();
+           
+
+        }
 
 
         Dictionary<string, UserInfo> users = new Dictionary<string, UserInfo>();
