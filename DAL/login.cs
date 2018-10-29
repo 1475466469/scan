@@ -116,6 +116,27 @@ namespace DAL
         }
 
 
+        public void UpdatePwd(string pwd,string newpwd)
+        {
+            try
+            {
+                DCF19Entities db2 = new DCF19Entities();
+                t_ADMM_UsrMst tum = db.t_ADMM_UsrMst.Where(u => u.fUsrID == t.fUsrID & u.C_x_f010 == pwd).FirstOrDefault();
+                if (tum == null)
+                {
+                    throw new Exception("原密码错误");
+                }
+                tum.C_x_f010 = newpwd;
+                db2.SaveChanges();
+
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
+           
+
+        }
+
 
     }
 }

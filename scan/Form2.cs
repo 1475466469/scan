@@ -697,5 +697,10 @@ namespace scan
             }
 
         }
+
+        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new Form3(admin).ShowDialog();
+        }
     }
 }
