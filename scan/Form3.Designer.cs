@@ -70,6 +70,7 @@
             this.textEdit2.Location = new System.Drawing.Point(112, 94);
             this.textEdit2.Name = "textEdit2";
             this.textEdit2.Properties.LookAndFeel.TouchUIMode = DevExpress.LookAndFeel.TouchUIMode.False;
+            this.textEdit2.Properties.PasswordChar = '*';
             this.textEdit2.Size = new System.Drawing.Size(113, 20);
             this.textEdit2.TabIndex = 3;
             // 
@@ -86,6 +87,7 @@
             this.textEdit3.Location = new System.Drawing.Point(110, 157);
             this.textEdit3.Name = "textEdit3";
             this.textEdit3.Properties.LookAndFeel.TouchUIMode = DevExpress.LookAndFeel.TouchUIMode.False;
+            this.textEdit3.Properties.PasswordChar = '*';
             this.textEdit3.Size = new System.Drawing.Size(115, 20);
             this.textEdit3.TabIndex = 5;
             // 

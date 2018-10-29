@@ -702,5 +702,16 @@ namespace scan
         {
             new Form3(admin).ShowDialog();
         }
+
+        private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Hide();
+            new Form1().ShowDialog();
+
+        }
+        private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
