@@ -117,4 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAA
+        AACSstX/krLV/5Ky1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky
+        1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky
+        1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky
+        1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky1f+RstX/krLV/5Ky1f+SstX/krLV/5Gy
+        1f+SstX/krLV/5Ky1f+SstX/lrXW/5W01v+at9f/mLbX/5q31/+Xtdb/m7jY/5i21/+Zttf/lbTW/5W0
+        1v+cuNj/l7XW/5m31/+Zt9f/mLbX/6S+2v+lv9r/qcHc/6fA2v+1yd//p7/b/7fK4P+jvdr/o73a/6W/
+        2v+gu9n/r8Xd/6nB3P+wxt7/q8Lc/6O92v+WtNb/l7XW/5W01f+VtNb/mLbX/5W01v+Xtdb/lbTW/5a1
+        1v+Yttb/lbTV/5a01v+Wtdb/l7XW/5a11v+Wtdb/l7XW/6C82f+mwNz/nLnZ/6K92/+cudj/pb/c/6jB
+        3f+buNj/oLza/6nC3f+gvNr/nbrZ/6jB3P+gu9n/lbTW/7XK4f/d5u//1N/s/8LT5v/e5/H/y9np/+3y
+        9//v8/f/0t/s/+Hp8v/q8PX/2eTv/7zP4//J2Oj/4enx/6/G3/+8z+X/7fH3/9/n8f/L2un/ytjp/7nN
+        4v/H1uf/w9Pm/77Q5P/D1Ob/wNHk/8nY6P+0yeH/2eTv/+Do8v+lv9z/uc3j/+/z+P/u8/f/0t/t/+Xs
+        9P/K2Oj/5Ovz/+Lq8//J2Oj/2uTv/9ji7v/j6vP/1ODt//P2+f/e5/H/p8Hc/5q31/+nwNz/p8Dc/5y5
+        2P+jvtv/nbnY/6fB3f+qw97/nrrZ/6O+2/+hvNr/o73a/5662f+qwt7/p8Hd/5a11v+SstX/kbHV/5Gx
+        1f+RstX/kbHV/5Gy1f+RsdX/kbHU/5Gy1f+RsdX/kbHV/5Gx1f+RsdX/kbHU/5Gx1f+SstX/krLV/5Ky
+        1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky
+        1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky
+        1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky1f+SstX/krLV/5Ky
+        1f+SstX/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAA==
+</value>
+  </data>
 </root>

@@ -57,7 +57,7 @@
             // 
             resources.ApplyResources(this.Pwd, "Pwd");
             this.Pwd.Name = "Pwd";
-            this.Pwd.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
+            this.Pwd.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.Pwd.Properties.LookAndFeel.TouchUIMode = DevExpress.LookAndFeel.TouchUIMode.False;
             this.Pwd.Properties.PasswordChar = '*';
             this.Pwd.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Pwd_KeyUp);
@@ -94,8 +94,9 @@
             // checkBoxXpw
             // 
             resources.ApplyResources(this.checkBoxXpw, "checkBoxXpw");
+            this.checkBoxXpw.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.checkBoxXpw.Name = "checkBoxXpw";
-            this.checkBoxXpw.UseVisualStyleBackColor = true;
+            this.checkBoxXpw.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 

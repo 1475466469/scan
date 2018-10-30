@@ -118,14 +118,9 @@ namespace scan
 
         protected override void OnClosing(CancelEventArgs e)
         {
-
-            
                 Application.Exit();
-           
 
         }
-
-
         Dictionary<string, UserInfo> users = new Dictionary<string, UserInfo>();
         public void SavePW()//保存用户和密码
         {
