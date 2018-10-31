@@ -51,7 +51,8 @@ public partial class V_INVD_StkOutLogItemSum
     public string fClrName { get; set; }
 
     public string fStyleName { get; set; }
+    public int mun { get; set; }
 
-}
+    }
 
 }

@@ -96,23 +96,11 @@ namespace scan
                 textEdit1.Text = data[0].fDlvNo;
                 textEdit2.Text = data[0].fCCode;
                 textEdit3.Text = data[0].fCName;
-               
-                //if (data[0]._x_f008=="0")
-                //{
-                //    //MessageBox.Show("s申请中");
-                //    barButtonItem2.Caption = "正在申请...";
-                //    barButtonItem2.Enabled = false;
-                //}
-                //else if(data[0]._x_f008 == null)
-                //{
-                //    barButtonItem2.Caption = "申请特批";
-                //    barButtonItem2.Enabled = true;
-                //}
-              
+
+
                 product_2 = so.Query_product(searchLookUpEdit1.Text.Trim());
                 gridControl1.DataSource = product_2;
                 searchControl1.Enabled = false;
-
                 LoadData(sf.Load(searchLookUpEdit1.Text.Trim()));
 
             }catch(Exception ex)
@@ -131,110 +119,197 @@ namespace scan
 
         }
 
+
+
+        //条码扫描回车事件
         private void searchControl1_KeyUp(object sender, KeyEventArgs e)
         {
             try
             {
-
                 if (e.KeyCode.GetHashCode() == 13)
                 {
                     if (searchControl1.Text.Trim() != "")
                     {
-
-                        BarcodeDetial data = bc.GetBarlist(searchControl1.Text);
-
-                        if (barlist.Exists(u => u.fBarcode == searchControl1.Text))
+                        BarcodeDetial data = bc.GetBarlist(searchControl1.Text);//获取到条码详情
+                        if(data != null)//判断条码是否有误
                         {
-                            MessageBox.Show("已经扫描过了");
-                            log.Wirtefile(admin.fUsrID + "添加条码:" + searchControl1.Text+",提示已扫描");
-                        }
-                        else if(data==null)
-                        {
-                            MessageBox.Show("条码错误");
-                            log.Wirtefile(admin.fUsrID + "添加条码:" + searchControl1.Text + ",提示条码错误");
-                        }
-                        else
-                        {
-                            List<V_INVD_StkOutLogItemSum> product = so.Query_product(searchLookUpEdit1.Text.Trim());
-
-                            //查询是否有这个品号
-                            V_INVD_StkOutLogItemSum result = product.Where(u => u.fGoodsCode.Equals(data.fGoodsCode)).FirstOrDefault();
-                            if (data.fOrdNo.StartsWith("YC"))//条码订单号是yc开头
+                            if (data.fOrdNo.StartsWith("YC"))  //判断条码类型
                             {
-                               
+                                List<V_INVD_StkOutLogItemSum> product = so.Query_product(searchLookUpEdit1.Text.Trim());//查询出库单的所有明细
+                                V_INVD_StkOutLogItemSum result = product.Where(u => u.fGoodsCode.Equals(data.fGoodsCode)).FirstOrDefault();//查询是否有这个品号
                                 if(result != null)
                                 {
-                                    log.Wirtefile(admin.fUsrID + "添加条码:" + searchControl1.Text + ".订单号为：" + data.fOrdNo);
-                                    barlist.Add(data);
-                                    gridControl2.RefreshDataSource();
-                                 
-                                }
-                                else
-                                {
-                                    MessageBox.Show("此单不包含品号"+data.fGoodsCode);
-                                    log.Wirtefile(admin.fUsrID + "添加条码:" + searchControl1.Text + "提示此单不包含品号："+ data.fGoodsCode);
-                                }
-                            }
-                            else
-                            {
-                                if (result != null)
-                                {
-                                    t_INVD_StkOutLogItem t = so.GetFordNo(searchLookUpEdit1.Text.Trim());
-
-                                    if (data.fOrdNo.Equals(t.fOrdNo))
+                                    //查询这个条码的包装编号有多少个条码
+                                   int count= bc.GetBarcodeCount(data.fPackNo);//获取包装编号的条码个数
+                                    if (count > 1) //大于一个的条码
                                     {
-                                        log.Wirtefile(admin.fUsrID + "添加条码:" + searchControl1.Text + ".订单号为：" + data.fOrdNo);
-                                        barlist.Add(data);
-                                        gridControl2.RefreshDataSource();
-                                       
+
                                     }
                                     else
                                     {
-                                        MessageBox.Show("您的条码订单号为:"+data.fOrdNo+"  不匹配出库单的订单号");
-                                        log.Wirtefile(admin.fUsrID + "添加条码:" + searchControl1.Text + "提示不匹配出库单的订单号：" + data.fOrdNo);
+                                        if(!barlist.Exists(u => u.fBarcode == data.fBarcode)) //判断是否有相同条码
+                                        {
+
+                                            
+                                            //标准条码
+                                            V_INVD_StkOutLogItemSum item = product_2.Where(u => u.fGoodsCode == data.fGoodsCode).FirstOrDefault();
+                                            int row = product_2.IndexOf(item);
+                                            gridView1.FocusedRowHandle = row;
+                                            gridView1.SetFocusedRowCellValue("mun", item.mun + 1);
+                                            barlist.Add(data);
+                                            gridControl2.RefreshDataSource();
+                                            searchControl1.Text = "";
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("请不要重复扫描");
+                                        }
+                                       
+
+
+
 
                                     }
-                                   
-
                                 }
                                 else
                                 {
-                                    MessageBox.Show("此单不包含品号" + data.fGoodsCode);
-                                   log.Wirtefile(admin.fUsrID + "添加条码:" + searchControl1.Text + "提示此单不包含品号：" + data.fGoodsCode);
-
+                                    MessageBox.Show("不包含此品号");
                                 }
 
+                            }
+                            else
+                            {
 
                             }
-                            
-                            
+
+
+
+
                         }
-                        
+                        else
+                        {
+                            MessageBox.Show("条码错误");
+                        }
+                       
+
+
+
+
+
+
+
+
+
+
 
                     }
                     else
                     {
-                        MessageBox.Show("请输入条码！");
-                        log.Wirtefile(admin.fUsrID + "提示请输入条码！" );
+                        MessageBox.Show("请输入条码");
                     }
-
                 }
-
-                if (barlist.Count > 0)
-                {
-                    barButtonItem8.Enabled = true;
-                }
-                else
-                {
-                    barButtonItem8.Enabled = false;
-                }
-
-            }
-            catch (Exception ex)
+            }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                log.Wirtefile(admin.fUsrID + "添加条码引发异常："+ex.Message);
             }
+            
+            
+            
+            
+            //BarcodeDetial data = bc.GetBarlist(searchControl1.Text);
+
+                        //if (barlist.Exists(u => u.fBarcode == searchControl1.Text))
+                        //{
+                        //    MessageBox.Show("已经扫描过了");
+                        //    log.Wirtefile(admin.fUsrID + "添加条码:" + searchControl1.Text+",提示已扫描");
+                        //    searchControl1.Text = "";
+                        //}
+                        //else if(data==null)
+                        //{
+                        //    MessageBox.Show("条码错误");
+                        //    log.Wirtefile(admin.fUsrID + "添加条码:" + searchControl1.Text + ",提示条码错误");
+                        //    searchControl1.Text = "";
+                        //}
+                        //else
+                        //{
+                        //    List<V_INVD_StkOutLogItemSum> product = so.Query_product(searchLookUpEdit1.Text.Trim());
+
+                        //    //查询是否有这个品号
+                        //    V_INVD_StkOutLogItemSum result = product.Where(u => u.fGoodsCode.Equals(data.fGoodsCode)).FirstOrDefault();
+                        //    if (data.fOrdNo.StartsWith("YC"))//条码订单号是yc开头
+                        //    {
+
+                        //        if(result != null)
+                        //        {
+                        //            log.Wirtefile(admin.fUsrID + "添加条码:" + searchControl1.Text + ".订单号为：" + data.fOrdNo);
+                        //            barlist.Add(data);
+                        //            gridControl2.RefreshDataSource();
+                        //            searchControl1.Text = "";
+
+                        //        }
+                        //        else
+                        //        {
+                        //            MessageBox.Show("此单不包含品号"+data.fGoodsCode);
+                        //            log.Wirtefile(admin.fUsrID + "添加条码:" + searchControl1.Text + "提示此单不包含品号："+ data.fGoodsCode);
+                        //            searchControl1.Text = "";
+                        //        }
+                    //}
+                    //else
+                    //{
+                        //        if (result != null)
+                        //        {
+                        //            t_INVD_StkOutLogItem t = so.GetFordNo(searchLookUpEdit1.Text.Trim());
+
+                        //            if (data.fOrdNo.Equals(t.fOrdNo))
+                        //            {
+                        //                log.Wirtefile(admin.fUsrID + "添加条码:" + searchControl1.Text + ".订单号为：" + data.fOrdNo);
+                        //                barlist.Add(data);
+                        //                gridControl2.RefreshDataSource();
+                        //                searchControl1.Text = "";
+
+                        //            }
+                        //            else
+                        //            {
+                        //                MessageBox.Show("您的条码订单号为:"+data.fOrdNo+"  不匹配出库单的订单号");
+                        //                log.Wirtefile(admin.fUsrID + "添加条码:" + searchControl1.Text + "提示不匹配出库单的订单号：" + data.fOrdNo);
+                        //                searchControl1.Text = "";
+
+                        //            }
+
+
+                        //        }
+                        //        else
+                        //        {
+                        //            MessageBox.Show("此单不包含品号" + data.fGoodsCode);
+                        //           log.Wirtefile(admin.fUsrID + "添加条码:" + searchControl1.Text + "提示此单不包含品号：" + data.fGoodsCode);
+                        //            searchControl1.Text = "";
+
+                        //        }
+                        //    }
+                        //}
+            //        }
+                
+            //    else
+            //    {
+            //        MessageBox.Show("请输入条码！");
+            //        log.Wirtefile(admin.fUsrID + "提示请输入条码！");
+            //    }
+            //    }
+            //    if (barlist.Count > 0)
+            //    {
+            //        barButtonItem8.Enabled = true;
+            //    }
+            //    else
+            //    {
+            //        barButtonItem8.Enabled = false;
+            //    }
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //    log.Wirtefile(admin.fUsrID + "添加条码引发异常："+ex.Message);
+            //}
         }
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -532,8 +607,7 @@ namespace scan
         {
             try
             {
-                if (product_2.Count>0)
-                {
+                
                     if (barlist.Count > 0)
                     {
                         List<V_INVD_StkOutLogItemSum> product = so.Query_product(searchLookUpEdit1.Text.Trim());
@@ -591,11 +665,7 @@ namespace scan
                     {
                         MessageBox.Show("您还没有扫描");
                     }
-                }
-                else
-                {
-                    MessageBox.Show("请选择需扫描的出库单");
-                }
+               
             }
             catch(Exception ex)
             {
@@ -712,6 +782,28 @@ namespace scan
         private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Application.Exit();
+        }
+
+
+
+        //取消扫描
+        private void barButtonItem13_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+
+                log.Wirtefile(admin.fUsrID + "点击取消扫描");
+                barlist.Clear();
+                sf.del(searchLookUpEdit1.Text.Trim());
+                log.Wirtefile(admin.fUsrID + "点击取消扫描并更新按钮更新了临时表");
+                gridControl2.RefreshDataSource();
+                barButtonItem8.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                log.Wirtefile(admin.fUsrID + "点击点击取消扫描出现异常：" + ex.Message);
+            }
         }
     }
 }

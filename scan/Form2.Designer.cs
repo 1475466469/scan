@@ -43,16 +43,19 @@
             DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem10 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem11 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem10 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem11 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem12 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -67,6 +70,7 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
@@ -102,9 +106,6 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.清空ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.删除并ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.清空并更新ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.重新加载ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.fPackNo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.fOrdNo = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -114,6 +115,7 @@
             this.fSizeDesc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.searchControl1 = new DevExpress.XtraEditors.SearchControl();
+            this.mun = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
@@ -233,9 +235,10 @@
             this.barSubItem1,
             this.barButtonItem10,
             this.barButtonItem11,
-            this.barButtonItem12});
+            this.barButtonItem12,
+            this.barButtonItem13});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 13;
+            this.barManager1.MaxItemId = 14;
             // 
             // bar2
             // 
@@ -250,7 +253,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem2, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem3, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem7, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem8, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem13, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem8, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(((DevExpress.XtraBars.BarLinkUserDefines)((DevExpress.XtraBars.BarLinkUserDefines.Caption | DevExpress.XtraBars.BarLinkUserDefines.PaintStyle))), this.barSubItem1, "设置", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
@@ -261,6 +265,7 @@
             this.barButtonItem2.Caption = "特批|(Ctrl+Q)";
             this.barButtonItem2.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.Glyph")));
             this.barButtonItem2.Id = 1;
+            this.barButtonItem2.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q));
             this.barButtonItem2.Name = "barButtonItem2";
             toolTipTitleItem1.Text = "Ctrl+Q";
             toolTipItem1.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
@@ -316,6 +321,21 @@
             this.barButtonItem7.SuperTip = superToolTip3;
             this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
             // 
+            // barButtonItem13
+            // 
+            this.barButtonItem13.Caption = "取消扫描";
+            this.barButtonItem13.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem13.Glyph")));
+            this.barButtonItem13.Id = 13;
+            this.barButtonItem13.Name = "barButtonItem13";
+            toolTipItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
+            toolTipItem4.Appearance.Options.UseImage = true;
+            toolTipItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolTipItem4.Image")));
+            toolTipTitleItem7.Text = "取消扫描";
+            superToolTip4.Items.Add(toolTipItem4);
+            superToolTip4.Items.Add(toolTipTitleItem7);
+            this.barButtonItem13.SuperTip = superToolTip4;
+            this.barButtonItem13.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem13_ItemClick);
+            // 
             // barButtonItem8
             // 
             this.barButtonItem8.Caption = "保存(Ctrl+S)";
@@ -324,17 +344,17 @@
             this.barButtonItem8.Id = 7;
             this.barButtonItem8.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S));
             this.barButtonItem8.Name = "barButtonItem8";
-            toolTipTitleItem7.Text = "Ctrl+S";
-            toolTipItem4.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
-            toolTipItem4.Appearance.Options.UseImage = true;
-            toolTipItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolTipItem4.Image")));
-            toolTipItem4.LeftIndent = 6;
-            toolTipTitleItem8.LeftIndent = 6;
-            toolTipTitleItem8.Text = "  保存";
-            superToolTip4.Items.Add(toolTipTitleItem7);
-            superToolTip4.Items.Add(toolTipItem4);
-            superToolTip4.Items.Add(toolTipTitleItem8);
-            this.barButtonItem8.SuperTip = superToolTip4;
+            toolTipTitleItem8.Text = "Ctrl+S";
+            toolTipItem5.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
+            toolTipItem5.Appearance.Options.UseImage = true;
+            toolTipItem5.Image = ((System.Drawing.Image)(resources.GetObject("toolTipItem5.Image")));
+            toolTipItem5.LeftIndent = 6;
+            toolTipTitleItem9.LeftIndent = 6;
+            toolTipTitleItem9.Text = "  保存";
+            superToolTip5.Items.Add(toolTipTitleItem8);
+            superToolTip5.Items.Add(toolTipItem5);
+            superToolTip5.Items.Add(toolTipTitleItem9);
+            this.barButtonItem8.SuperTip = superToolTip5;
             this.barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
             // 
             // barSubItem1
@@ -423,16 +443,16 @@
             this.barButtonItem6.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.Glyph")));
             this.barButtonItem6.Id = 5;
             this.barButtonItem6.Name = "barButtonItem6";
-            toolTipTitleItem9.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
-            toolTipTitleItem9.Appearance.Options.UseImage = true;
-            toolTipTitleItem9.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem9.Image")));
-            toolTipItem5.LeftIndent = 6;
-            toolTipTitleItem10.LeftIndent = 6;
-            toolTipTitleItem10.Text = "保存";
-            superToolTip5.Items.Add(toolTipTitleItem9);
-            superToolTip5.Items.Add(toolTipItem5);
-            superToolTip5.Items.Add(toolTipTitleItem10);
-            this.barButtonItem6.SuperTip = superToolTip5;
+            toolTipTitleItem10.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
+            toolTipTitleItem10.Appearance.Options.UseImage = true;
+            toolTipTitleItem10.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem10.Image")));
+            toolTipItem6.LeftIndent = 6;
+            toolTipTitleItem11.LeftIndent = 6;
+            toolTipTitleItem11.Text = "保存";
+            superToolTip6.Items.Add(toolTipTitleItem10);
+            superToolTip6.Items.Add(toolTipItem6);
+            superToolTip6.Items.Add(toolTipTitleItem11);
+            this.barButtonItem6.SuperTip = superToolTip6;
             // 
             // barButtonItem9
             // 
@@ -448,14 +468,14 @@
             this.barButtonItem4.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.Glyph")));
             this.barButtonItem4.Id = 1;
             this.barButtonItem4.Name = "barButtonItem4";
-            toolTipTitleItem11.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
-            toolTipTitleItem11.Appearance.Options.UseImage = true;
-            toolTipTitleItem11.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem11.Image")));
-            toolTipItem6.LeftIndent = 6;
-            toolTipItem6.Text = "申请特批";
-            superToolTip6.Items.Add(toolTipTitleItem11);
-            superToolTip6.Items.Add(toolTipItem6);
-            this.barButtonItem4.SuperTip = superToolTip6;
+            toolTipTitleItem12.Appearance.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image6")));
+            toolTipTitleItem12.Appearance.Options.UseImage = true;
+            toolTipTitleItem12.Image = ((System.Drawing.Image)(resources.GetObject("toolTipTitleItem12.Image")));
+            toolTipItem7.LeftIndent = 6;
+            toolTipItem7.Text = "申请特批";
+            superToolTip7.Items.Add(toolTipTitleItem12);
+            superToolTip7.Items.Add(toolTipItem7);
+            this.barButtonItem4.SuperTip = superToolTip7;
             // 
             // panelControl1
             // 
@@ -559,7 +579,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.panelControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(1556, 634);
-            this.splitContainerControl1.SplitterPosition = 346;
+            this.splitContainerControl1.SplitterPosition = 458;
             this.splitContainerControl1.TabIndex = 20;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -574,7 +594,7 @@
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(346, 634);
+            this.gridControl1.Size = new System.Drawing.Size(458, 634);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -588,7 +608,8 @@
             this.fGoodsCode,
             this.fGoodsName,
             this.fPlanOutQty,
-            this.fStyleName});
+            this.fStyleName,
+            this.mun});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -624,7 +645,7 @@
             this.fPlanOutQty.FieldName = "fPlanOutQty";
             this.fPlanOutQty.Name = "fPlanOutQty";
             this.fPlanOutQty.Visible = true;
-            this.fPlanOutQty.VisibleIndex = 3;
+            this.fPlanOutQty.VisibleIndex = 5;
             // 
             // fStyleName
             // 
@@ -632,7 +653,7 @@
             this.fStyleName.FieldName = "fStyleName";
             this.fStyleName.Name = "fStyleName";
             this.fStyleName.Visible = true;
-            this.fStyleName.VisibleIndex = 4;
+            this.fStyleName.VisibleIndex = 3;
             // 
             // gridControl2
             // 
@@ -643,7 +664,7 @@
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.MenuManager = this.barManager1;
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(1205, 575);
+            this.gridControl2.Size = new System.Drawing.Size(1093, 575);
             this.gridControl2.TabIndex = 1;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -653,47 +674,23 @@
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.删除ToolStripMenuItem,
-            this.清空ToolStripMenuItem,
-            this.删除并ToolStripMenuItem,
-            this.清空并更新ToolStripMenuItem,
-            this.重新加载ToolStripMenuItem});
+            this.清空ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 48);
             // 
             // 删除ToolStripMenuItem
             // 
             this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
-            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.删除ToolStripMenuItem.Text = "删除";
             this.删除ToolStripMenuItem.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
             // 
             // 清空ToolStripMenuItem
             // 
             this.清空ToolStripMenuItem.Name = "清空ToolStripMenuItem";
-            this.清空ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.清空ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.清空ToolStripMenuItem.Text = "清空";
             this.清空ToolStripMenuItem.Click += new System.EventHandler(this.清空ToolStripMenuItem_Click);
-            // 
-            // 删除并ToolStripMenuItem
-            // 
-            this.删除并ToolStripMenuItem.Name = "删除并ToolStripMenuItem";
-            this.删除并ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.删除并ToolStripMenuItem.Text = "删除并更新";
-            this.删除并ToolStripMenuItem.Click += new System.EventHandler(this.删除并ToolStripMenuItem_Click);
-            // 
-            // 清空并更新ToolStripMenuItem
-            // 
-            this.清空并更新ToolStripMenuItem.Name = "清空并更新ToolStripMenuItem";
-            this.清空并更新ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.清空并更新ToolStripMenuItem.Text = "清空并更新";
-            this.清空并更新ToolStripMenuItem.Click += new System.EventHandler(this.清空并更新ToolStripMenuItem_Click);
-            // 
-            // 重新加载ToolStripMenuItem
-            // 
-            this.重新加载ToolStripMenuItem.Name = "重新加载ToolStripMenuItem";
-            this.重新加载ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.重新加载ToolStripMenuItem.Text = "重新加载";
-            this.重新加载ToolStripMenuItem.Click += new System.EventHandler(this.重新加载ToolStripMenuItem_Click);
             // 
             // gridView2
             // 
@@ -766,7 +763,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1205, 59);
+            this.panelControl2.Size = new System.Drawing.Size(1093, 59);
             this.panelControl2.TabIndex = 0;
             // 
             // searchControl1
@@ -784,6 +781,14 @@
             this.searchControl1.SelectedIndexChanged += new System.EventHandler(this.searchControl1_SelectedIndexChanged);
             this.searchControl1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.searchControl1_KeyUp);
             // 
+            // mun
+            // 
+            this.mun.Caption = "已扫描数量";
+            this.mun.FieldName = "mun";
+            this.mun.Name = "mun";
+            this.mun.Visible = true;
+            this.mun.VisibleIndex = 4;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -800,6 +805,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form2";
             this.Text = "出库扫描";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
@@ -873,9 +879,6 @@
         private System.Windows.Forms.ToolStripMenuItem 清空ToolStripMenuItem;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
-        private System.Windows.Forms.ToolStripMenuItem 删除并ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 清空并更新ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 重新加载ToolStripMenuItem;
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
         private DevExpress.XtraBars.BarAndDockingController barAndDockingController1;
         private DevExpress.XtraEditors.SearchLookUpEdit lookUpEdit1;
@@ -889,5 +892,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem13;
+        private DevExpress.XtraGrid.Columns.GridColumn mun;
     }
 }

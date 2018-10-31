@@ -25,7 +25,7 @@ namespace DAL
         {
             try
             {
-                List<t_INVD_StkOutLogMst> list = db.t_INVD_StkOutLogMst.Where(u => u.fStkCode == fStkCode & u.fScanFlag=="0" & u.fIfPost == "0" & u.fIfCancel=="0" & u.C_x_f008!="1").ToList();
+                List<t_INVD_StkOutLogMst> list = db.t_INVD_StkOutLogMst.Where(u => u.fStkCode == fStkCode & u.fScanFlag!="1" & u.fIfPost == "0" & u.fIfCancel=="0" & u.C_x_f008!="1").ToList();
                 return list;
             }
             catch (System.Data.Entity.Core.EntityException)

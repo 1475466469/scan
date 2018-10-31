@@ -23,7 +23,7 @@ namespace DAL
 
             try
             {
-
+               
 
                 var list = (from u in db.t_BCMM_BarcodeFgItem
                             join g in db.t_BCMM_BarcodeItem
@@ -40,7 +40,8 @@ namespace DAL
                                 fBarcode = g.fBarcode,
                                 fGoodsCode = k.fGoodsCode,
                                 fGoodsName = k.fGoodsName,
-                                fSizeDesc = k.fSizeDesc
+                                fSizeDesc = k.fSizeDesc,
+                                fQty=u.fQty
                             }).FirstOrDefault();
                 if (list == null)
                 {
@@ -73,6 +74,16 @@ namespace DAL
 
 
         }
+
+        //根据条码的包装编号获取条码的个数
+        public int GetBarcodeCount(string fPackNo)
+        {
+
+           return db.t_BCMM_BarcodeItem.Where(u => u.fPackNo == fPackNo).Count();
+        }
+
+
+
 
 
 

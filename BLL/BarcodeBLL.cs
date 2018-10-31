@@ -14,5 +14,9 @@ namespace BLL
         {
             return bc.GetBarlist(Barcode);
         }
+        public int GetBarcodeCount(string fPackNo)
+        {
+            return bc.GetBarcodeCount(fPackNo);
+        }
     }
 }
