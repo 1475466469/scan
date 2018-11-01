@@ -56,7 +56,8 @@ namespace DAL
                     fGoodsName = list.fGoodsName,
                     fSizeDesc = list.fSizeDesc,
                     fOrdNo = list.fOrdNo,
-                    fPackNo = list.fPackNo
+                    fPackNo = list.fPackNo,
+                    fQty = list.fQty.ToString()
                 };
             }
             catch (System.Data.Entity.Core.EntityException)

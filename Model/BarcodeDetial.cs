@@ -14,6 +14,6 @@ namespace Model
         public string fGoodsName { get; set; }
        public string fSizeDesc { get; set; }
 
-
+        public string fQty { get; set; }
     }
 }

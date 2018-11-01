@@ -102,6 +102,7 @@
             this.fGoodsName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.fPlanOutQty = new DevExpress.XtraGrid.Columns.GridColumn();
             this.fStyleName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.mun = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -115,7 +116,8 @@
             this.fSizeDesc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.searchControl1 = new DevExpress.XtraEditors.SearchControl();
-            this.mun = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
@@ -655,6 +657,14 @@
             this.fStyleName.Visible = true;
             this.fStyleName.VisibleIndex = 3;
             // 
+            // mun
+            // 
+            this.mun.Caption = "已扫描数量";
+            this.mun.FieldName = "mun";
+            this.mun.Name = "mun";
+            this.mun.Visible = true;
+            this.mun.VisibleIndex = 4;
+            // 
             // gridControl2
             // 
             this.gridControl2.ContextMenuStrip = this.contextMenuStrip1;
@@ -781,13 +791,21 @@
             this.searchControl1.SelectedIndexChanged += new System.EventHandler(this.searchControl1_SelectedIndexChanged);
             this.searchControl1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.searchControl1_KeyUp);
             // 
-            // mun
+            // gridColumn5
             // 
-            this.mun.Caption = "已扫描数量";
-            this.mun.FieldName = "mun";
-            this.mun.Name = "mun";
-            this.mun.Visible = true;
-            this.mun.VisibleIndex = 4;
+            this.gridColumn5.Caption = "计划出库数";
+            this.gridColumn5.FieldName = "fPlanOutQty";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 5;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "计划出库数";
+            this.gridColumn6.FieldName = "fPlanOutQty";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 5;
             // 
             // Form2
             // 
@@ -894,5 +912,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
         private DevExpress.XtraBars.BarButtonItem barButtonItem13;
         private DevExpress.XtraGrid.Columns.GridColumn mun;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
     }
 }

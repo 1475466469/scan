@@ -97,13 +97,65 @@ namespace scan
                 textEdit2.Text = data[0].fCCode;
                 textEdit3.Text = data[0].fCName;
 
-
                 product_2 = so.Query_product(searchLookUpEdit1.Text.Trim());
                 gridControl1.DataSource = product_2;
                 searchControl1.Enabled = false;
-                LoadData(sf.Load(searchLookUpEdit1.Text.Trim()));
+               
+              List<BarcodeDetial> result= LoadData(sf.Load(searchLookUpEdit1.Text.Trim()));
+              gridControl2.RefreshDataSource();
 
-            }catch(Exception ex)
+                //拿取备份文件重新计算已扫描数据
+               List<string>arr = new List<string>();
+                foreach(BarcodeDetial item in result)
+                {
+                    BarcodeDetial code = bc.GetBarlist(item.fBarcode);//获取到条码详情
+                    int count = bc.GetBarcodeCount(code.fPackNo);//获取包装编号的条码个数
+                    V_INVD_StkOutLogItemSum pr = product_2.Where(u => u.fGoodsCode == item.fGoodsCode).FirstOrDefault();//获取在左边的数据
+                    int row = product_2.IndexOf(pr);  //取出行数
+
+                    if (count > 1)
+                    {
+
+                        if (result.Where(u => u.fPackNo == code.fPackNo).Count() == count)
+                        {
+                            if (!arr.Contains(code.fPackNo))
+                            {
+                                arr.Add(code.fPackNo);
+                                gridView1.SetRowCellValue(row, "mun", Convert.ToInt32(gridView1.GetRowCellValue(row, "mun").ToString()) + Convert.ToInt32(Decimal.Parse(code.fQty)));
+
+                            }
+                           
+
+
+
+
+                        }
+                        
+
+                    }
+                    else
+                    {
+                        gridView1.SetRowCellValue(row, "mun", Convert.ToInt32(gridView1.GetRowCellValue(row, "mun").ToString()) + Convert.ToInt32(Decimal.Parse(code.fQty)));
+                      // gridView1.set
+                    }
+
+
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 log.Wirtefile(admin.fUsrID + "选择出库单引发异常:" + ex.Message);
@@ -133,42 +185,130 @@ namespace scan
                         BarcodeDetial data = bc.GetBarlist(searchControl1.Text);//获取到条码详情
                         if(data != null)//判断条码是否有误
                         {
+                            List<V_INVD_StkOutLogItemSum> product = so.Query_product(searchLookUpEdit1.Text.Trim());//查询出库单的所有明细
+                            V_INVD_StkOutLogItemSum result = product.Where(u => u.fGoodsCode.Equals(data.fGoodsCode)).FirstOrDefault();//查询是否有这个品号
                             if (data.fOrdNo.StartsWith("YC"))  //判断条码类型
                             {
-                                List<V_INVD_StkOutLogItemSum> product = so.Query_product(searchLookUpEdit1.Text.Trim());//查询出库单的所有明细
-                                V_INVD_StkOutLogItemSum result = product.Where(u => u.fGoodsCode.Equals(data.fGoodsCode)).FirstOrDefault();//查询是否有这个品号
+                               
                                 if(result != null)
                                 {
+                                    V_INVD_StkOutLogItemSum item = product_2.Where(u => u.fGoodsCode == data.fGoodsCode).FirstOrDefault();
                                     //查询这个条码的包装编号有多少个条码
-                                   int count= bc.GetBarcodeCount(data.fPackNo);//获取包装编号的条码个数
-                                    if (count > 1) //大于一个的条码
+                                    if (item.mun < item.fPlanOutQty)
                                     {
 
-                                    }
-                                    else
-                                    {
-                                        if(!barlist.Exists(u => u.fBarcode == data.fBarcode)) //判断是否有相同条码
+
+                                        int count = bc.GetBarcodeCount(data.fPackNo);//获取包装编号的条码个数
+                                        if (count > 1) //大于一个的条码
                                         {
+                                            if (!barlist.Exists(u => u.fBarcode == data.fBarcode))
+                                            {
 
-                                            
-                                            //标准条码
-                                            V_INVD_StkOutLogItemSum item = product_2.Where(u => u.fGoodsCode == data.fGoodsCode).FirstOrDefault();
-                                            int row = product_2.IndexOf(item);
-                                            gridView1.FocusedRowHandle = row;
-                                            gridView1.SetFocusedRowCellValue("mun", item.mun + 1);
-                                            barlist.Add(data);
-                                            gridControl2.RefreshDataSource();
-                                            searchControl1.Text = "";
+                                                if (count - barlist.Where(u => u.fPackNo == data.fPackNo).Count() == 1)
+                                                {
+
+                                                    if (item.fPlanOutQty < Convert.ToInt32(Decimal.Parse(data.fQty)))
+                                                    {
+                                                        MessageBox.Show("条码包含的数量大于计划扫描数不允许扫描");
+                                                        return;
+                                                    }
+                                                    if ((Convert.ToInt32(Decimal.Parse(data.fQty)) + item.mun) > item.fPlanOutQty)
+                                                    {
+                                                        MessageBox.Show("条码包含的数量加上已扫描数超出了计划数不允许扫描");
+                                                        return;
+                                                    }
+
+                                                    int row = product_2.IndexOf(item);
+                                                    gridView1.FocusedRowHandle = row;
+
+                                                    gridView1.SetFocusedRowCellValue("mun", item.mun + Convert.ToInt32(Decimal.Parse(data.fQty)));
+                                                    barlist.Add(data);
+                                                    gridControl2.RefreshDataSource();
+                                                    searchControl1.Text = "";
+                                                    if (barlist.Count > 0)
+                                                    {
+                                                        barButtonItem8.Enabled = true;
+                                                    }
+                                                    else
+                                                    {
+                                                        barButtonItem8.Enabled = false;
+                                                    }
+
+                                                }
+                                                else
+                                                {
+                                                    barlist.Add(data);
+                                                    gridControl2.RefreshDataSource();
+                                                    searchControl1.Text = "";
+                                                    if (barlist.Count > 0)
+                                                    {
+                                                        barButtonItem8.Enabled = true;
+                                                    }
+                                                    else
+                                                    {
+                                                        barButtonItem8.Enabled = false;
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("不要重复扫描");
+                                            }
+
                                         }
                                         else
                                         {
-                                            MessageBox.Show("请不要重复扫描");
+                                            if (!barlist.Exists(u => u.fBarcode == data.fBarcode)) //判断是否有相同条码
+                                            {
+                                                if(item.fPlanOutQty< Convert.ToInt32(Decimal.Parse(data.fQty)))
+                                                {
+                                                    MessageBox.Show("条码包含的数量大于计划扫描数不允许扫描");
+                                                    return;
+                                                }
+                                                if ((Convert.ToInt32(Decimal.Parse(data.fQty)) + item.mun) > item.fPlanOutQty)
+                                                {
+                                                    MessageBox.Show("条码包含的数量加上已扫描数超出了计划数不允许扫描");
+                                                    return;
+                                                }
+
+                                                //标准条码
+                                                //V_INVD_StkOutLogItemSum item = product_2.Where(u => u.fGoodsCode == data.fGoodsCode).FirstOrDefault();
+                                                int row = product_2.IndexOf(item);
+                                                gridView1.FocusedRowHandle = row;
+
+                                                //判断条码已扫描数与是否与订单实际数相同
+                                                     
+                                                    gridView1.SetFocusedRowCellValue("mun", item.mun + Convert.ToInt32(Decimal.Parse(data.fQty)));
+                                                    barlist.Add(data);
+                                                    gridControl2.RefreshDataSource();
+                                                    searchControl1.Text = "";
+                                                if (barlist.Count > 0)
+                                                {
+                                                    barButtonItem8.Enabled = true;
+                                                }
+                                                else
+                                                {
+                                                    barButtonItem8.Enabled = false;
+                                                }
+
+
+
+
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("请不要重复扫描");
+                                            }
+
+
+
+
+
                                         }
-                                       
-
-
-
-
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("已经满足计划数不需要再扫描了");
                                     }
                                 }
                                 else
@@ -177,8 +317,107 @@ namespace scan
                                 }
 
                             }
-                            else
+                            else if(data.fOrdNo.StartsWith("XS"))  //销售订单条码
                             {
+                                if (result != null)
+                                {
+
+                                    if (data.fOrdNo == so.GetFordNo(searchLookUpEdit1.Text.Trim()).fOrdNo)   //订单号一致
+                                    {
+                                        int count = bc.GetBarcodeCount(data.fPackNo);//获取包装编号的条码个数
+
+                                        if (count > 1) //大于一个的条码
+                                        {
+                                            if (!barlist.Exists(u => u.fBarcode == data.fBarcode))
+                                            {
+
+                                                if (count - barlist.Where(u => u.fPackNo == data.fPackNo).Count() == 1)
+                                                {
+                                                    V_INVD_StkOutLogItemSum item = product_2.Where(u => u.fGoodsCode == data.fGoodsCode).FirstOrDefault();
+                                                    int row = product_2.IndexOf(item);
+                                                    gridView1.FocusedRowHandle = row;
+                                                    gridView1.SetFocusedRowCellValue("mun", item.mun + Convert.ToInt32(Decimal.Parse(data.fQty)));
+                                                    barlist.Add(data);
+                                                    gridControl2.RefreshDataSource();
+                                                    searchControl1.Text = "";
+                                                    barButtonItem8.Enabled = false;
+                                                }
+                                                else
+                                                {
+                                                    barlist.Add(data);
+                                                    gridControl2.RefreshDataSource();
+                                                    searchControl1.Text = "";
+                                                    barButtonItem8.Enabled = false;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("不要重复扫描");
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            if (!barlist.Exists(u => u.fBarcode == data.fBarcode)) //判断是否有相同条码
+                                            {
+                                                //标准条码
+                                                V_INVD_StkOutLogItemSum item = product_2.Where(u => u.fGoodsCode == data.fGoodsCode).FirstOrDefault();
+                                                int row = product_2.IndexOf(item);
+                                                gridView1.FocusedRowHandle = row;
+
+                                                //判断条码已扫描数与是否与订单实际数相同
+                                                if (item.mun < item.fPlanOutQty)
+                                                {
+                                                    gridView1.SetFocusedRowCellValue("mun", item.mun + Convert.ToInt32(Decimal.Parse(data.fQty)));
+                                                    barlist.Add(data);
+                                                    gridControl2.RefreshDataSource();
+                                                    searchControl1.Text = "";
+                                                    barButtonItem8.Enabled = false;
+
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("数量不能多出计划出库数");
+                                                }
+
+
+
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("请不要重复扫描");
+                                            }
+
+
+
+
+
+                                        }
+
+
+
+
+
+
+
+
+
+
+
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("此条码订单号为：" + data.fOrdNo + "与出库单订单号不匹配");
+                                    }
+
+                                }
+                                else
+                                {
+                                    MessageBox.Show("出库单没有这个品号");
+                                }
+
+
+
 
                             }
 
@@ -346,7 +585,7 @@ namespace scan
             try
             {
                 log.Wirtefile(admin.fUsrID + "点击删除快捷菜单");
-                delbarlist(0);
+                delbarlist();
                 
 
             }
@@ -367,10 +606,22 @@ namespace scan
         {
             try
             {
+                //清空列表重置已扫描数
                 barlist.Clear();
-                log.Wirtefile(admin.fUsrID + "清空扫描列表");
                 gridControl2.RefreshDataSource();
-                barButtonItem8.Enabled = false;
+                product_2 = so.Query_product(searchLookUpEdit1.Text.Trim());
+                List<V_INVD_StkOutLogItemSum> product = new List<V_INVD_StkOutLogItemSum>();
+                foreach(V_INVD_StkOutLogItemSum item in product_2)
+                {
+                    item.mun = 0;
+                    product.Add(item);
+
+                }
+                gridControl1.DataSource = product;
+                gridControl1.RefreshDataSource();
+                log.Wirtefile(admin.fUsrID + "清空扫描列表重置扫描数量");
+                
+              
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -438,7 +689,7 @@ namespace scan
         {
             try
             {
-                delbarlist(1);
+               // delbarlist();
 
             }catch(Exception ex)
             {
@@ -452,7 +703,7 @@ namespace scan
         /// <summary>
         /// 快捷菜单删除
         /// </summary>
-        private void delbarlist(int flag)
+        private void delbarlist()
         {
 
             int[] row = gridView2.GetSelectedRows();
@@ -462,46 +713,52 @@ namespace scan
             foreach (int i in row)
             {
                 string barcode = gridView2.GetRowCellValue(i, "fBarcode").ToString();
+                BarcodeDetial data = bc.GetBarlist(barcode);//获取到条码详情
+                int count = bc.GetBarcodeCount(data.fPackNo);//获取包装编号的条码个数
+
+                if (count > 1)
+                {
+                    //混合条码
+                    V_INVD_StkOutLogItemSum item = product_2.Where(u => u.fGoodsCode == data.fGoodsCode).FirstOrDefault(); 
+                    int r = product_2.IndexOf(item);
+                    gridView1.FocusedRowHandle = r;
+                    if (barlist.Where(u => u.fPackNo == data.fPackNo).Count() == count)
+                    {//如果相同则减去
+                        gridView1.SetFocusedRowCellValue("mun", item.mun - Convert.ToInt32(Decimal.Parse(data.fQty)));
+                        searchControl1.Text = "";
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+                    V_INVD_StkOutLogItemSum item = product_2.Where(u => u.fGoodsCode == data.fGoodsCode).FirstOrDefault();
+                    int r = product_2.IndexOf(item);
+                    gridView1.FocusedRowHandle = r;
+                    gridView1.SetFocusedRowCellValue("mun", item.mun - Convert.ToInt32(Decimal.Parse(data.fQty)));
+                    searchControl1.Text = "";
+
+                }
+
+            
                 foreach (BarcodeDetial item in barlist)
                 {
+
                     if (item.fBarcode.Equals(barcode))
                     {
                         del.Add(item);
-
                         log.Wirtefile(admin.fUsrID + "添加选择删除：" + item.fBarcode);
                     }
-                   
-                }
-            }
-            barlist.RemoveAll(u => del.Contains(u));
-            log.Wirtefile(admin.fUsrID + "选择删除成功" );
-
-            if (flag == 1)
-            {
-                //删除出库单
-                sf.del(searchLookUpEdit1.Text.Trim());
-                List<DO_t_TemporaryScan> files = new List<DO_t_TemporaryScan>();
-                foreach(BarcodeDetial b in barlist)
-                {
-                    DO_t_TemporaryScan ts = new DO_t_TemporaryScan()
-                    {
-                        fStOutLogNo = searchLookUpEdit1.Text.Trim(),
-                        fPackNo = b.fPackNo,
-                        fOrdNo = b.fOrdNo,
-                        fBarcode = b.fBarcode,
-                        fGoodsCode = b.fGoodsCode,
-                        fSizeDesc = b.fSizeDesc,
-                        fGoodsName = b.fGoodsName,
-
-                        saveDate = DateTime.Now.ToString("d")
-                    };
-                    log.Wirtefile(admin.fUsrID + "添加保存临时文件：" + b.fBarcode);
-                    files.Add(ts);
                     
                 }
-                sf.Save(files);
-                log.Wirtefile(admin.fUsrID + "保存临时文件成功");
+
+
             }
+            barlist.RemoveAll(u => del.Contains(u));
+          
 
             gridControl2.RefreshDataSource();
             if (barlist.Count > 0)
@@ -534,55 +791,55 @@ namespace scan
             }
         }
 
-        private void 重新加载ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
+        //private void 重新加载ToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
 
 
-                log.Wirtefile(admin.fUsrID + "点击重新加载");
+        //        log.Wirtefile(admin.fUsrID + "点击重新加载");
                 
-                if (searchLookUpEdit1.Text.Trim() != "")
-                {
+        //        if (searchLookUpEdit1.Text.Trim() != "")
+        //        {
 
 
-                    List<DO_t_TemporaryScan> list = sf.Load(searchLookUpEdit1.Text.Trim());
-                    if (list.Count == 0)
-                    {
-                        MessageBox.Show("你没有保存的历史数据");
-                    }
-                    else
-                    {
-                        LoadData(list);
+        //            List<DO_t_TemporaryScan> list = sf.Load(searchLookUpEdit1.Text.Trim());
+        //            if (list.Count == 0)
+        //            {
+        //                MessageBox.Show("你没有保存的历史数据");
+        //            }
+        //            else
+        //            {
+        //                LoadData(list);
 
-                    }
+        //            }
 
-                    if (barlist.Count > 0)
-                    {
-                        barButtonItem8.Enabled = true;
-                    }
-                    else
-                    {
-                        barButtonItem8.Enabled = false;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("请先选择出库单");
-                }
-                }catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                log.Wirtefile(admin.fUsrID + "点击重新加载出现异常：" + ex.Message);
+        //            if (barlist.Count > 0)
+        //            {
+        //                barButtonItem8.Enabled = true;
+        //            }
+        //            else
+        //            {
+        //                barButtonItem8.Enabled = false;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("请先选择出库单");
+        //        }
+        //        }catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //        log.Wirtefile(admin.fUsrID + "点击重新加载出现异常：" + ex.Message);
 
-            }
+        //    }
         
-        }
+        //}
 
 
 
         
-        private void LoadData(List<DO_t_TemporaryScan> list)
+        private List<BarcodeDetial> LoadData(List<DO_t_TemporaryScan> list)
         {
             barlist.Clear();
             foreach (DO_t_TemporaryScan item in list)
@@ -599,80 +856,100 @@ namespace scan
                 barlist.Add(n);
                 log.Wirtefile(admin.fUsrID + "加载到条码："+n.fBarcode);
             }
-
-            gridControl2.RefreshDataSource();
+            return barlist;
+           
         }
 
         private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            try
+            if (gridView1.RowCount > 0 & gridView2.RowCount > 0)
             {
+                List<V_INVD_StkOutLogItemSum> vi= (List<V_INVD_StkOutLogItemSum>) gridControl1.DataSource;
+                foreach(V_INVD_StkOutLogItemSum item in vi)
+                {
+                    if(Convert.ToInt32(item.mun)!= Convert.ToInt32(Decimal.Parse(item.fPlanOutQty.ToString())))
+                    {
+                        MessageBox.Show("品号：" + item.fGoodsCode+ "已扫描数量不符合");
+                        return;
+                    }
+                    
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("请扫描条码");
+            }
+
+
+            //try
+            //{
                 
-                    if (barlist.Count > 0)
-                    {
-                        List<V_INVD_StkOutLogItemSum> product = so.Query_product(searchLookUpEdit1.Text.Trim());
+            //        if (barlist.Count > 0)
+            //        {
+            //            List<V_INVD_StkOutLogItemSum> product = so.Query_product(searchLookUpEdit1.Text.Trim());
 
-                        for (int i = 0; i < product.Count; i++)
-                        {
-                            int row = barlist.Count(u => u.fGoodsCode == product[i].fGoodsCode);
+            //            for (int i = 0; i < product.Count; i++)
+            //            {
+            //                int row = barlist.Count(u => u.fGoodsCode == product[i].fGoodsCode);
 
-                            if (row > (int)product[i].fPlanOutQty)
-                            {
-                                MessageBox.Show("品号：" + product[i].fGoodsCode + "多出" + (row - (int)product[i].fPlanOutQty) + "套");
-                                return;
-                            }
-                            else if (row < (int)product[i].fPlanOutQty)
-                            {
-                                MessageBox.Show("品号：" + product[i].fGoodsCode + "差" + ((int)product[i].fPlanOutQty - row) + "套");
-                                return;
-                            }
-                        }
-                        List<Do_t_dious_Scan> ts = new List<Do_t_dious_Scan>();
-                        foreach (BarcodeDetial item in barlist)
-                        {
-                         ts.Add(
-                            new Do_t_dious_Scan()
-                            {
-                                fStkOutLogNo= product[0].fStkOutLogNo,
-                                fOrdNo = item.fOrdNo,
-                                fBarcode = item.fBarcode,
-                                Date = DateTime.Now.ToString("d"),
-                                fGoodsCode = item.fGoodsCode,
-                                fGoodsName = item.fGoodsName,
-                                fOrdSNo= so.GetFsno(so.GetFordNo(searchLookUpEdit1.Text.Trim()).fOrdNo, item.fGoodsName)
-                            });
-                        }
-                        so.Save(ts);
-                        MessageBox.Show("成功入库");
-                        log.Wirtefile(admin.fUsrID + "出库单：" + searchLookUpEdit1.Text.Trim() + ",扫描完毕成功入库");
-                        //更新出库单选择框
-                        List<t_INVD_StkOutLogMst> data = so.Query_fStoutLogNo(lookUpEdit1.EditValue.ToString());
-                        textEdit1.Text = "";
-                        textEdit2.Text = "";
-                        textEdit3.Text = "";
-                        searchLookUpEdit1.Properties.ValueMember = "fStkOutLogNo";
-                        searchLookUpEdit1.Properties.DisplayMember = "fStkOutLogNo";
-                        searchLookUpEdit1.Properties.DataSource = data;
-                        searchLookUpEdit1.Properties.NullText = "";
-                        //清空扫描结果
-                        barlist.Clear();
-                        gridControl2.RefreshDataSource();
-                        //清空参考产品
-                        product_2.Clear();
-                        gridControl1.RefreshDataSource();
-                    }
-                    else
-                    {
-                        MessageBox.Show("您还没有扫描");
-                    }
+            //                if (row > (int)product[i].fPlanOutQty)
+            //                {
+            //                    MessageBox.Show("品号：" + product[i].fGoodsCode + "多出" + (row - (int)product[i].fPlanOutQty) + "套");
+            //                    return;
+            //                }
+            //                else if (row < (int)product[i].fPlanOutQty)
+            //                {
+            //                    MessageBox.Show("品号：" + product[i].fGoodsCode + "差" + ((int)product[i].fPlanOutQty - row) + "套");
+            //                    return;
+            //                }
+            //            }
+            //            List<Do_t_dious_Scan> ts = new List<Do_t_dious_Scan>();
+            //            foreach (BarcodeDetial item in barlist)
+            //            {
+            //             ts.Add(
+            //                new Do_t_dious_Scan()
+            //                {
+            //                    fStkOutLogNo= product[0].fStkOutLogNo,
+            //                    fOrdNo = item.fOrdNo,
+            //                    fBarcode = item.fBarcode,
+            //                    Date = DateTime.Now.ToString("d"),
+            //                    fGoodsCode = item.fGoodsCode,
+            //                    fGoodsName = item.fGoodsName,
+            //                    fOrdSNo= so.GetFsno(so.GetFordNo(searchLookUpEdit1.Text.Trim()).fOrdNo, item.fGoodsName)
+            //                });
+            //            }
+            //            so.Save(ts);
+            //            MessageBox.Show("成功入库");
+            //            log.Wirtefile(admin.fUsrID + "出库单：" + searchLookUpEdit1.Text.Trim() + ",扫描完毕成功入库");
+            //            //更新出库单选择框
+            //            List<t_INVD_StkOutLogMst> data = so.Query_fStoutLogNo(lookUpEdit1.EditValue.ToString());
+            //            textEdit1.Text = "";
+            //            textEdit2.Text = "";
+            //            textEdit3.Text = "";
+            //            searchLookUpEdit1.Properties.ValueMember = "fStkOutLogNo";
+            //            searchLookUpEdit1.Properties.DisplayMember = "fStkOutLogNo";
+            //            searchLookUpEdit1.Properties.DataSource = data;
+            //            searchLookUpEdit1.Properties.NullText = "";
+            //            //清空扫描结果
+            //            barlist.Clear();
+            //            gridControl2.RefreshDataSource();
+            //            //清空参考产品
+            //            product_2.Clear();
+            //            gridControl1.RefreshDataSource();
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("您还没有扫描");
+            //        }
                
-            }
-            catch(Exception ex)
-            {
-                //throw ex;
-                MessageBox.Show(ex.Message);
-              log.Wirtefile(admin.fUsrID + "点击完成扫描出现异常：" + ex.Message);
-            }
+            //}
+            //catch(Exception ex)
+            //{
+            //    //throw ex;
+            //    MessageBox.Show(ex.Message);
+            //  log.Wirtefile(admin.fUsrID + "点击完成扫描出现异常：" + ex.Message);
+            //}
         }
         private void searchControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -791,19 +1068,34 @@ namespace scan
         {
             try
             {
-
-                log.Wirtefile(admin.fUsrID + "点击取消扫描");
+                //清空列表重置已扫描数
                 barlist.Clear();
                 sf.del(searchLookUpEdit1.Text.Trim());
-                log.Wirtefile(admin.fUsrID + "点击取消扫描并更新按钮更新了临时表");
                 gridControl2.RefreshDataSource();
-                barButtonItem8.Enabled = false;
+                product_2 = so.Query_product(searchLookUpEdit1.Text.Trim());
+                List<V_INVD_StkOutLogItemSum> product = new List<V_INVD_StkOutLogItemSum>();
+                foreach (V_INVD_StkOutLogItemSum item in product_2)
+                {
+                    item.mun = 0;
+                    product.Add(item);
+
+                }
+                gridControl1.DataSource = product;
+                gridControl1.RefreshDataSource();
+                log.Wirtefile(admin.fUsrID + "清空扫描列表重置扫描数量");
+
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                log.Wirtefile(admin.fUsrID + "点击点击取消扫描出现异常：" + ex.Message);
+                log.Wirtefile(admin.fUsrID + "点击清空扫描列表出现异常：" + ex.Message);
             }
+
+
+
+          
+
         }
     }
 }
