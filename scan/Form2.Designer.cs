@@ -103,6 +103,7 @@
             this.fPlanOutQty = new DevExpress.XtraGrid.Columns.GridColumn();
             this.fStyleName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.mun = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.progressBarControl1 = new DevExpress.XtraEditors.ProgressBarControl();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -133,6 +134,7 @@
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
@@ -577,6 +579,7 @@
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.gridControl1);
             this.splitContainerControl1.Panel1.Text = "Panel1";
+            this.splitContainerControl1.Panel2.Controls.Add(this.progressBarControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.gridControl2);
             this.splitContainerControl1.Panel2.Controls.Add(this.panelControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
@@ -664,6 +667,17 @@
             this.mun.Name = "mun";
             this.mun.Visible = true;
             this.mun.VisibleIndex = 4;
+            // 
+            // progressBarControl1
+            // 
+            this.progressBarControl1.EditValue = 40;
+            this.progressBarControl1.Location = new System.Drawing.Point(45, 259);
+            this.progressBarControl1.MenuManager = this.barManager1;
+            this.progressBarControl1.Name = "progressBarControl1";
+            this.progressBarControl1.Properties.LookAndFeel.TouchUIMode = DevExpress.LookAndFeel.TouchUIMode.False;
+            this.progressBarControl1.Properties.Minimum = 40;
+            this.progressBarControl1.Size = new System.Drawing.Size(323, 18);
+            this.progressBarControl1.TabIndex = 2;
             // 
             // gridControl2
             // 
@@ -841,6 +855,7 @@
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
@@ -914,5 +929,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn mun;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraEditors.ProgressBarControl progressBarControl1;
     }
 }

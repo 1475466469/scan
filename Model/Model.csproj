@@ -73,6 +73,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>F19.edmx</DependentUpon>
     </Compile>
+    <Compile Include="fPackNoList.cs" />
     <Compile Include="fStoutLogNoList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StoreCode.cs" />

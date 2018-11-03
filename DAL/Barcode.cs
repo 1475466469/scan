@@ -83,7 +83,37 @@ namespace DAL
            return db.t_BCMM_BarcodeItem.Where(u => u.fPackNo == fPackNo).Count();
         }
 
+        //获取包装编号的所有产品
 
+        public List<fPackNoList> GetBarcodeList(string fPackNo)
+        {
+
+            //   return db.t_BCMM_BarcodeFgItem.Where(u => u.fPackNo == fPackNo).ToList();
+
+            var data = from u in db.t_BCMM_BarcodeFgItem
+                       join g in db.t_BOMM_GoodsMst
+                       on u.fGoodsID equals g.fGoodsID
+                       select new
+                       {
+                          fPackNo =u.fPackNo,
+                         fGoodsCode = g.fGoodsCode,
+                          fQty =u.fQty
+                         };
+            List<fPackNoList> list = new List<fPackNoList>();
+            foreach(var i in data)
+            {
+                list.Add(new fPackNoList()
+                {
+                    fPackNo = i.fPackNo,
+                    fGoodsCode = i.fGoodsCode,
+                    fQty = i.fQty.ToString()
+                }
+                );
+            }
+            return list;
+
+
+        }
 
 
 
